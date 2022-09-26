@@ -1,27 +1,18 @@
 import java.util.Scanner;
+import Utils.*;
 import Matrix.*;
 
 class Main{
     public static void main(String[] args) {
         Scanner obj = new Scanner(System.in);
-        int x=obj.nextInt();
-        double[][] m=new double[x][x];
-        for(int i=0; i<x;i++){
-            for(int j=0;j<x;j++){
-                m[i][j]=obj.nextInt();
-            }
-        }
-        for(int i=0; i<x;i++){
-            for(int j=0;j<x;j++){
-                if(j<x-1){
-                    System.out.print(m[i][j]+" ");
-                }
-                else{
-                    System.out.print(m[i][j]+"\n");
-                }
-            }
-        }
+        //int menu = Utils.utils.getMenu();
+        int n=obj.nextInt();
+        int ma=obj.nextInt();
+        double[][] m = new double[n][ma];
+        utils.readMatrix(m,n,ma);
+        utils.printMatrix(m);
         System.out.println(determinant.ekspansiKofaktor(m));
+        Matrix.spl.cramer(m);
         obj.close();
     }
 }
