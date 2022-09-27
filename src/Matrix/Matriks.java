@@ -1,3 +1,4 @@
+package Matrix;
 import Matrix.determinant;
 
 public class Matriks {

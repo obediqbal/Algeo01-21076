@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import Utils.*;
+import interpolasi_regresi.interpolasiPolinom;
 import Matrix.*;
 
 class Main{
@@ -11,10 +12,7 @@ class Main{
         double[][] m = new double[n][ma];
         utils.readMatrix(m,n,ma);
         utils.printMatrix(m);
-        System.out.println("determinan");
-        System.out.println(determinant.reduksiBaris(m));
-        //Matrix.spl.cramer(m);
-        //Matrix.OBE.triangleup(m);
+        interpolasiPolinom.interpolasipol(m);
         utils.printMatrix(m);
         obj.close();
     }

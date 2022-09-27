@@ -7,7 +7,7 @@ public class utils {
 		Scanner obj = new Scanner(System.in);
 		for(int i=0; i<n;i++){
             for(int j=0;j<ma;j++){
-                m[i][j]=obj.nextInt();
+                m[i][j]=obj.nextDouble();
             }
         }
 		obj.close();
@@ -27,11 +27,14 @@ public class utils {
 	}
 	
 	public static void copyMatrix(double[][] min, double[][] mout) {
-		for(int i=0; i<min.length;i++){
-			for(int j=0; j<min[0].length;j++){
-				mout[i][j]=min[i][j];
-			}
-		}	
+		if(isSameSize(min, mout)){
+			for(int i=0; i<min.length;i++){
+				for(int j=0; j<min[0].length;j++){
+					mout[i][j]=min[i][j];
+				}
+			}	
+		}
+
 	}
 
 	public static void fillZero(double[][] m){
@@ -58,5 +61,9 @@ public class utils {
 		System.out.println("1. spl");
 		int menu=obj.nextInt();
 		
+	}
+
+	public static boolean isSameSize(double[][] m1, double[][] m2){
+		return (m1.length==m2.length &&  m1[0].length==m2[0].length);
 	}
 }

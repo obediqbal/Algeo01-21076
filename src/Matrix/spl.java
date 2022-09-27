@@ -24,12 +24,7 @@ public class spl {
 			spl.copyMatrix(a,a1);
 			spl.insertCol(a1, b, j);
 			det1=determinant.ekspansiKofaktor(a1);
-			System.out.print("x");
-			System.out.print(j);
-			System.out.print(" ");
-			System.out.print(det1/det0);
-			
-			System.out.print("\n");
+			x[j]=det1/det0;
 		}
 	}
 	
