@@ -34,7 +34,14 @@ public class utils {
 				}
 			}	
 		}
+	}
 
+	public static void forceCopyMatrix(double[][] min, double[][] mout){
+		for(int i=0; i<min.length;i++){
+			for(int j=0; j<min[0].length;j++){
+				mout[i][j]=min[i][j];
+			}
+		}
 	}
 
 	public static boolean isRowZero(double[][] m, int a){
