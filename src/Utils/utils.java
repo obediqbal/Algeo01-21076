@@ -37,6 +37,13 @@ public class utils {
 
 	}
 
+	public static boolean isRowZero(double[][] m, int a){
+		for(int j = 0; j<m[0].length; j++){
+			if(m[a][j]!=0) return false;
+		}
+		return true;
+	}
+
 	public static void fillZero(double[][] m){
 		for(int i = 0; i<m.length; i++){
 			for(int j = 0; j<m[0].length; j++){
