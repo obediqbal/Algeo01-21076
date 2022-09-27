@@ -44,7 +44,7 @@ public class determinant {
 	
 	public static double reduksiBaris(double[][] m) {
 		double[][] newm = new double[m.length][m.length];
-		spl.copyMatrix(m, newm);
+		utils.copyMatrix(m, newm);
 		int swapcount=0;
 		double det=1;
 		int firstidx=0;
