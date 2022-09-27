@@ -3,7 +3,7 @@ import Matrix.determinant;
 import Utils.utils;
 
 public class spl {
-	public static void cramer(double[][] m) {
+	public static void cramer(double[][] m, double[] x) {
 		double[][] a = new double[m.length][m[0].length-1];
 		double[][] b = new double[m.length][1];
 		double[][] a1 = new double[m.length][m[0].length-1];
@@ -24,10 +24,11 @@ public class spl {
 			spl.copyMatrix(a,a1);
 			spl.insertCol(a1, b, j);
 			det1=determinant.ekspansiKofaktor(a1);
-			System.out.print("x ");
+			System.out.print("x");
 			System.out.print(j);
 			System.out.print(" ");
 			System.out.print(det1/det0);
+			
 			System.out.print("\n");
 		}
 	}

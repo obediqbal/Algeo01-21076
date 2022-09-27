@@ -1,5 +1,6 @@
 package Utils;
 import java.util.Scanner;
+import Matrix.*;
 
 public class utils {
 	public static void readMatrix(double[][] m,int n,int ma) {
@@ -25,24 +26,21 @@ public class utils {
         }
 	}
 	
-	public static int getMenu() {
+	public static void getMenu() {
 		Scanner obj = new Scanner(System.in);
 		System.out.println("1. metode");
 		System.out.println("1. metode");
 		System.out.println("1. metode");
 		int menu=obj.nextInt();
-		obj.close();
-		return menu;
 		
 	}
 	
-	public int splMenu() {
+	public static void splMenu() {
 		Scanner obj = new Scanner(System.in);
 		System.out.println("1. spl");
 		System.out.println("1. spl");
 		System.out.println("1. spl");
 		int menu=obj.nextInt();
-		obj.close();
-		return menu;
+		
 	}
 }

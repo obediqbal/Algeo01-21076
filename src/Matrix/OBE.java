@@ -55,7 +55,7 @@ public class OBE {
             System.out.println();
         }
     }
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         int i, j;
         double m[][] = {{2, 3, 4}, {5, 6, 7}, {8, 9, 1}};
         triangledown(m);
@@ -65,5 +65,5 @@ public class OBE {
             }
             System.out.println();
         }
-    }
+    }*/
 }
