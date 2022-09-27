@@ -1,4 +1,4 @@
-
+import Matrix.determinant;
 
 public class Matriks {
     public static void transpose(double[][] m){
@@ -40,9 +40,9 @@ public class Matriks {
         double [][]adj = new double[m.length][m.length];
         for (i = 0; i < m.length; i++){
             for (j = 0; j < m.length; j++){
-                adj[i][j] = 
-            }
-        }
+                adj[i][j] = determinant.ekspansiKofaktor(kofaktor(m, i, j));
+            }   System.out.print(adj[i][j] + " ");
+        }System.out.println();
     }
     public static void main(String[] args) {
         double[][] m = {{2,3,4},{5,6,7},{8,9,1}};
