@@ -25,7 +25,7 @@ public class OBE {
             if (mult)
             m[x][j] = multiplydigit * m[x][j];
             else
-            m[x][j] = multiplydigit / m[x][j];
+            m[x][j] = m[x][j] / multiplydigit;
         }   
     }  
     public static void triangleup(double[][] m){
