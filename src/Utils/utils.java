@@ -26,6 +26,22 @@ public class utils {
         }
 	}
 	
+	public static void copyMatrix(double[][] min, double[][] mout) {
+		for(int i=0; i<min.length;i++){
+			for(int j=0; j<min[0].length;j++){
+				mout[i][j]=min[i][j];
+			}
+		}	
+	}
+
+	public static void fillZero(double[][] m){
+		for(int i = 0; i<m.length; i++){
+			for(int j = 0; j<m[0].length; j++){
+				m[i][j] = 0;
+			}
+		}
+	}
+	
 	public static void getMenu() {
 		Scanner obj = new Scanner(System.in);
 		System.out.println("1. metode");
