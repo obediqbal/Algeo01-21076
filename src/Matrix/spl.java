@@ -1,5 +1,6 @@
 package Matrix;
 import Matrix.determinant;
+import Matrix.OBE;
 import Utils.utils;
 
 public class spl {
@@ -21,7 +22,7 @@ public class spl {
 		det0 = determinant.ekspansiKofaktor(a);
 		
 		for(int j=0;j<a.length;j++){
-			spl.copyMatrix(a,a1);
+			utils.copyMatrix(a,a1);
 			spl.insertCol(a1, b, j);
 			det1=determinant.ekspansiKofaktor(a1);
 			System.out.print("x");
@@ -33,14 +34,6 @@ public class spl {
 		}
 	}
 	
-	public static void copyMatrix(double[][] min, double[][] mout) {
-		for(int i=0; i<min.length;i++){
-			for(int j=0; j<min[0].length;j++){
-				mout[i][j]=min[i][j];
-			}
-		}	
-	}
-	
 	public static void insertCol(double[][] a, double[][] b, int k) {
 		for(int i=0;i<a.length;i++){
 			for(int j=0;j<a[0].length;j++){
@@ -49,5 +42,25 @@ public class spl {
 				}
 			}
 		}
+	}
+
+	public static double[][] eliminasiGauss(double[][] m){
+		// Menerima augmented matriks m
+		// Menghasilkan solusi SPL dari m
+		double[][] nm = new double[m[0].length][m[0].length];
+		utils.fillZero(nm);
+		utils.copyMatrix(m, nm);
+		OBE.triangledown(nm);
+
+		double[][] res = new double[m[0].length][1];
+
+		int i, j;
+		for(i=m.length-1; i>=0; i--){
+			res[i] = 
+		}
+	}
+
+	public static void eliminasiGaussJordan(double[][] m){
+
 	}
 }
