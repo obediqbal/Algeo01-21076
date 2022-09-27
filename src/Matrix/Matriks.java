@@ -1,5 +1,6 @@
 package Matrix;
 import Matrix.determinant;
+import Utils.utils;
 
 public class Matriks {
     public static void transpose(double[][] m){
@@ -38,14 +39,18 @@ public class Matriks {
 	}
     public static void adjoint(double [][]m){
         int i, j;
+        int p=1;
         double [][]adj = new double[m.length][m.length];
         for (i = 0; i < m.length; i++){
             for (j = 0; j < m.length; j++){
-                adj[i][j] = determinant.ekspansiKofaktor(kofaktor(m, i, j));
-            }   System.out.print(adj[i][j] + " ");
-        }System.out.println();
+                adj[i][j] = p*determinant.ekspansiKofaktor(kofaktor(m, i, j));
+                p=-p;
+            }   //System.out.print(adj[i][j] + " ");
+        }//System.out.println();
+        transpose(adj);
+        utils.printMatrix(adj);
     }
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         double[][] m = {{2,3,4},{5,6,7},{8,9,1}};
         m = kofaktor(m, 1, 0);
 
@@ -55,5 +60,5 @@ public class Matriks {
                 System.out.print(" ");
             }
         }
-    }
+    }*/
 }

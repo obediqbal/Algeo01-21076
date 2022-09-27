@@ -12,7 +12,8 @@ class Main{
         double[][] m = new double[n][ma];
         utils.readMatrix(m,n,ma);
         utils.printMatrix(m);
-        interpolasiPolinom.interpolasipol(m);
+        //interpolasiPolinom.interpolasipol(m,x);
+        Matriks.adjoint(m);
         utils.printMatrix(m);
         obj.close();
     }
