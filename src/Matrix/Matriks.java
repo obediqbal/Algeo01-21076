@@ -48,7 +48,7 @@ public class Matriks {
             }   //System.out.print(adj[i][j] + " ");
         }//System.out.println();
         transpose(adj);
-        utils.printMatrix(adj);
+        m=adj;
     }
     /*public static void main(String[] args) {
         double[][] m = {{2,3,4},{5,6,7},{8,9,1}};
@@ -61,4 +61,13 @@ public class Matriks {
             }
         }
     }*/
+    public static void inverse(double[][] m){
+        adjoint(m);
+        double per=determinant.ekspansiKofaktor(m);
+        for (int i=0;i<m.length;i++){
+            for (int j=0;j<m[0].length;j++){
+                m[i][j]=m[i][j]/per;
+            }
+        }
+    }
 }
