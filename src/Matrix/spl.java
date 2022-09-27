@@ -44,18 +44,43 @@ public class spl {
 		// Menghasilkan solusi SPL dari m
 		double[][] nm = new double[m[0].length][m[0].length];
 		utils.fillZero(nm);
-		utils.copyMatrix(m, nm);
-		OBE.triangledown(nm);
+		utils.forceCopyMatrix(m, nm);
+		utils.printMatrix(nm);
+		OBE.triangleup(nm);
+		System.out.println();
+		utils.printMatrix(nm);
+		System.out.println();
 
-		double[][] res = new double[m[0].length][1];
-
+		double[][] res = new double[m.length][1];
 		int i, j;
 		for(i=m.length-1; i>=0; i--){
-			res[i] = 
+			// if(utils.isRowZero(m, i)) continue;
+			OBE.multdivrows(nm, false, i, nm[i][i]);
+			j = 0;
+			res[i][0] = nm[i][nm.length-1];
+			while(j<nm.length-1){
+				if(i!=j) res[i][0] -= nm[i][j]*res[j][0];
+				j++;
+			}
+			// perlu validasi nm[i][i] bukan 0, atau validasi dia pasti segitiga bawah
 		}
+		utils.printMatrix(nm);
+
+		return res;
 	}
 
 	public static void eliminasiGaussJordan(double[][] m){
-
+ 
+	}
+	public static void main(String[] args) {
+		int a = 3;
+		int b = 4;
+		// double[][] m = new double[a][b];
+		// utils.readMatrix(m, a, b);
+		double[][] m = {{1, -1, 2, 5}, {2, -2, 4, 10}, {3, -1, 6, 15}};
+		// utils.printMatrix(m);
+		double[][] res = new double[b][1];
+		res = eliminasiGauss(m);
+		utils.printMatrix(res);
 	}
 }
