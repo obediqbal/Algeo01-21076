@@ -4,10 +4,11 @@ import Matrix.OBE;
 import Utils.utils;
 
 public class spl {
-	public static void cramer(double[][] m, double[] x) {
+	public static double[] cramer(double[][] m) {
 		double[][] a = new double[m.length][m[0].length-1];
 		double[][] b = new double[m.length][1];
 		double[][] a1 = new double[m.length][m[0].length-1];
+		double[] x = new double[m.length];
 		double det0,det1;
 		for(int i=0;i<m.length;i++) {
 			for(int j=0;j<m[0].length;j++) {
@@ -27,6 +28,7 @@ public class spl {
 			det1=determinant.ekspansiKofaktor(a1);
 			x[j]=det1/det0;
 		}
+		return x;
 	}
 	
 	public static void insertCol(double[][] a, double[][] b, int k) {
@@ -39,7 +41,7 @@ public class spl {
 		}
 	}
 
-	public static double[][] eliminasiGauss(double[][] m){
+	/*public static double[][] eliminasiGauss(double[][] m){
 		// Menerima augmented matriks m
 		// Menghasilkan solusi SPL dari m
 		double[][] nm = new double[m[0].length][m[0].length];
@@ -82,5 +84,5 @@ public class spl {
 		double[][] res = new double[b][1];
 		res = eliminasiGauss(m);
 		utils.printMatrix(res);
-	}
+	}*/
 }
