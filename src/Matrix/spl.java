@@ -41,13 +41,13 @@ public class spl {
 		}
 	}
 
-	/*public static double[][] eliminasiGauss(double[][] m){
+	public static double[][] eliminasiGauss(double[][] m){
 		// Menerima augmented matriks m
 		// Menghasilkan solusi SPL dari m
+		// TODO: jika parametrik dan tidak ada solusi
 		double[][] nm = new double[m[0].length][m[0].length];
 		utils.fillZero(nm);
 		utils.forceCopyMatrix(m, nm);
-		utils.printMatrix(nm);
 		OBE.triangleup(nm);
 		System.out.println();
 		utils.printMatrix(nm);
@@ -64,25 +64,37 @@ public class spl {
 				if(i!=j) res[i][0] -= nm[i][j]*res[j][0];
 				j++;
 			}
-			// perlu validasi nm[i][i] bukan 0, atau validasi dia pasti segitiga bawah
+			// TODO: perlu validasi nm[i][i] bukan 0, atau validasi dia pasti segitiga bawah
 		}
-		utils.printMatrix(nm);
-
-		return res;
+		return res; 
 	}
 
-	public static void eliminasiGaussJordan(double[][] m){
- 
+	public static double[][] eliminasiGaussJordan(double[][] m){
+		// GAK BISA PAKE TRIANGLE DOWN EUYY, AKAN KUBIKIN TOESELON()
+		double[][] nm = new double[utils.max(m.length, m[0].length)][m[0].length];
+		utils.fillZero(nm);
+		utils.forceCopyMatrix(m, nm);
+		OBE.triangleup(nm);
+		OBE.triangledown(nm);
+
+		double[][] res = new double[m[0].length-1][1];
+		int i;
+		for(i=0; i<m.length; i++){
+			OBE.multdivrows(nm, false, i, nm[i][i]);
+			res[i][0] = nm[i][m[i].length-1];
+		}
+		return res;
 	}
 	public static void main(String[] args) {
 		int a = 3;
 		int b = 4;
 		// double[][] m = new double[a][b];
 		// utils.readMatrix(m, a, b);
-		double[][] m = {{1, -1, 2, 5}, {2, -2, 4, 10}, {3, -1, 6, 15}};
+		// double[][] m = {{1, -1, 2, 5}, {2, -2, 4, 10}, {3, -1, 6, 15}};
+		double[][] m ={{2,3,-1,5},{4,4,-3,3},{-2,3,-1,1}};
 		// utils.printMatrix(m);
 		double[][] res = new double[b][1];
-		res = eliminasiGauss(m);
+		res = eliminasiGaussJordan(m);
 		utils.printMatrix(res);
-	}*/
+	}
 }
