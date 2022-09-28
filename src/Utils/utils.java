@@ -54,6 +54,11 @@ public class utils {
 			}
 		}
 	}
+
+	public static double max(double a, double b){
+		if(a>b) return a;
+		else return b;
+	}
 	
 	public static void getMenu() {
 		Scanner obj = new Scanner(System.in);
