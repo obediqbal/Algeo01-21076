@@ -66,7 +66,11 @@ public class spl {
 		return -1;
 	}
 
-	public static double[][] eliminasiGauss(double[][] m){
+	/**
+	 * @param m
+	 * @return
+	 */
+	public static double[] eliminasiGauss(double[][] m){
 		// Menerima augmented matriks m
 		// Menghasilkan solusi SPL dari m
 		// Menghasilkan matriks berukuran 0x0 jika tidak ada solusi
@@ -76,27 +80,27 @@ public class spl {
 		utils.forceCopyMatrix(m, nm);
 		// OBE.triangleup(nm);
 		OBE.toEchelon(nm, false);
-		System.out.println("nm");
-		utils.printMatrix(nm);
-		System.out.println();
+		// System.out.println("nm");
+		// utils.printMatrix(nm);
+		// System.out.println();
 
-		double[][] res;
+		double[] res;
 		if(hasNoSolution(nm)){
-			res = new double[0][0];
+			res = new double[0];
 			return res;
 		}
-		res = new double[nm.length-1][1];
+		res = new double[nm.length-1];
 		Matriks.fillNaN(res);
 		int i, j;
 		int var;
 		for(i=m.length-1; i>=0; i--){
 			var = findBaseVarIdx(nm, i);
 			if(var!=-1){
-				res[var][0] = nm[i][nm.length-1];
+				res[var] = nm[i][nm.length-1];
 				// System.out.println("res: " + res[var][0] + "; var: " + var);
 				j = var+1;
 				while(j<nm.length-1){
-					if(var!=j && nm[i][j]!=0) res[var][0] -= nm[i][j]*res[j][0];
+					if(var!=j && nm[i][j]!=0) res[var] -= nm[i][j]*res[j];
 					j++;
 				}
 			}
@@ -105,7 +109,7 @@ public class spl {
 		return res; 
 	}
 
-	public static double[][] eliminasiGaussJordan(double[][] m){
+	public static double[] eliminasiGaussJordan(double[][] m){
 		// GAK BISA PAKE TRIANGLE DOWN EUYY, AKAN KUBIKIN TOESELON()
 		double[][] nm = new double[utils.max(m.length, m[0].length)][m[0].length];
 		utils.fillZero(nm);
@@ -115,13 +119,13 @@ public class spl {
 		// utils.printMatrix(nm);
 		// System.out.println();
 
-		double[][] res;
+		double[] res;
 		if(hasNoSolution(nm)){
-			res = new double[0][0];
+			res = new double[0];
 			return res;
 		}
 
-		res = new double[m[0].length-1][1];
+		res = new double[m[0].length-1];
 		Matriks.fillNaN(res);
 		int i;
 		int var;
@@ -129,7 +133,7 @@ public class spl {
 			var=findBaseVarIdx(nm, i);
 			if(var!=-1 && isSole(nm, i)){
 				if(nm[i][i]!=1 && nm[i][i]!=0) OBE.multdivrows(nm, false, i, nm[i][i]);
-				res[var][0] = nm[i][m[i].length-1];
+				res[var] = nm[i][m[i].length-1];
 			}
 		}
 		return res;
@@ -142,11 +146,11 @@ public class spl {
 		// double[][] m = {{1, -1, 2, 5}, {2, -2, 4, 10}, {3, -1, 6, 15}}; //parametrik
 		// double[][] m ={{2,3,-1,5},{-2,3,-1,1},{4,4,-3,3}}; // punya solusi
         // double m[][] = {{1,3,-2,0,2,0,0},{2,6,-5,-2,4,-3,-1},{0,0,5,10,0,15,5},{2,6,0,8,4,18,6}}; // parametrik
-		double[][] m = {{1,2,1,1},{2,2,0,2},{3,4,1,2}}; //Tidak ada solusi
+		// double[][] m = {{1,2,1,1},{2,2,0,2},{3,4,1,2}}; //Tidak ada solusi
 		// utils.printMatrix(m);
-		double[][] res = eliminasiGaussJordan(m);
+		double[] res = eliminasiGaussJordan(m);
 		// double[][] res = eliminasiGauss(m);
 		// res = eliminasiGauss(m);
-		utils.printMatrix(res);
+		utils.printSolusi(res);;
 	}
 }
