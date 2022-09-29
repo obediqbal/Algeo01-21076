@@ -11,14 +11,14 @@ public class utils {
                 m[i][j]=obj.nextDouble();
             }
         }
-		obj.close();
+		//obj.close();
 	}
 	public static double[][] makeMatrix(){
 		Scanner obj=new Scanner(System.in);
 		int n=obj.nextInt();
 		int ma=obj.nextInt();
 		double[][] m=new double[n][ma];
-		obj.close();
+		//obj.close();
 		readMatrix(m, n, ma);
 		return m;
 	}
@@ -124,6 +124,22 @@ public class utils {
 			System.out.print("x");
 			System.out.print(i+1 + ":");
 			System.out.print(x[i]+"\n");
+		}
+	}
+
+	public static boolean isSquare(double[][] m){
+		return m.length==m[0].length;
+	}
+	public static void augmentedtoMatrix(double[][] m,double[][] a, double[][] b){
+		for(int i=0;i<m.length;i++) {
+			for(int j=0;j<m[0].length;j++) {
+				if (j!=m[0].length-1) {
+					a[i][j]=m[i][j];
+				}
+				else {
+					b[i][0]=m[i][j];
+				}
+			}
 		}
 	}
 }

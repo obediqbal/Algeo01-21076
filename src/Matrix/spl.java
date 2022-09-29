@@ -5,12 +5,13 @@ import Utils.utils;
 
 public class spl {
 	public static double[] cramer(double[][] m) {
+		// prekondisi: det(m)!=0
 		double[][] a = new double[m.length][m[0].length-1];
 		double[][] b = new double[m.length][1];
 		double[][] a1 = new double[m.length][m[0].length-1];
 		double[] x = new double[m.length];
 		double det0,det1;
-		for(int i=0;i<m.length;i++) {
+		/*for(int i=0;i<m.length;i++) {
 			for(int j=0;j<m[0].length;j++) {
 				if (j!=m[0].length-1) {
 					a[i][j]=m[i][j];
@@ -19,7 +20,8 @@ public class spl {
 					b[i][0]=m[i][j];
 				}
 			}
-		}
+		}*/
+		utils.augmentedtoMatrix(m, a, b);
 		det0 = determinant.ekspansiKofaktor(a);
 		
 		for(int j=0;j<a.length;j++){

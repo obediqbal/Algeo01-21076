@@ -77,5 +77,16 @@ public class Matriks {
                 m[i][j] = Double.NaN;
             }
         }
+    public static double[][] multiplyMatrix(double[][] a, double[][] b){
+        double[][] newm= new double[a[0].length][b.length];
+        for(int i=0;i<a.length;i++){
+            for(int j=0;j<b.length;j++){
+                newm[i][j]=0;
+                for(int k=0;k<a[0].length;k++){
+                    newm[i][j]=newm[i][j]+a[i][k]*b[k][j];
+                }
+            }
+        }
+        return newm;
     }
 }
