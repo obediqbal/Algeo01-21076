@@ -108,12 +108,18 @@ public class spl {
 		double[][] nm = new double[utils.max(m.length, m[0].length)][m[0].length];
 		utils.fillZero(nm);
 		utils.forceCopyMatrix(m, nm);
-		OBE.toEchelon(m, true);
-		System.out.println("gauss jordan");
-		utils.printMatrix(m);
-		System.out.println();
+		OBE.toEchelon(nm, true);
+		// System.out.println("gauss jordan");
+		// utils.printMatrix(nm);
+		// System.out.println();
 
-		double[][] res = new double[m[0].length-1][1];
+		double[][] res;
+		if(hasNoSolution(nm)){
+			res = new double[0][0];
+			return res;
+		}
+
+		res = new double[m[0].length-1][1];
 		int i;
 		for(i=0; i<m.length; i++){
 			OBE.multdivrows(nm, false, i, nm[i][i]);
@@ -127,11 +133,12 @@ public class spl {
 		// double[][] m = new double[a][b];
 		// utils.readMatrix(m, a, b);
 		// double[][] m = {{1, -1, 2, 5}, {2, -2, 4, 10}, {3, -1, 6, 15}}; //parametrik
-		double[][] m ={{2,3,-1,5},{-2,3,-1,1},{4,4,-3,3}}; // punya solusi
-        // double m[][] = {{1,3,-2,0,2,0,0},{2,6,-5,-2,4,-3,-1},{0,0,5,10,0,15,5},{2,6,0,8,4,18,6}}; // parametrik
+		// double[][] m ={{2,3,-1,5},{-2,3,-1,1},{4,4,-3,3}}; // punya solusi
+        double m[][] = {{1,3,-2,0,2,0,0},{2,6,-5,-2,4,-3,-1},{0,0,5,10,0,15,5},{2,6,0,8,4,18,6}}; // parametrik
 		// double[][] m = {{1,2,1,1},{2,2,0,2},{3,4,1,2}}; //Tidak ada solusi
 		// utils.printMatrix(m);
 		double[][] res = eliminasiGaussJordan(m);
+		// double[][] res = eliminasiGauss(m);
 		// res = eliminasiGauss(m);
 		utils.printMatrix(res);
 	}
