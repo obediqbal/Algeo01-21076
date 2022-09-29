@@ -127,6 +127,14 @@ public class utils {
 		}
 	}
 
+	public static void printSolusi(String[] x){
+		for(int i=0;i<x.length;i++){
+			System.out.print("x");
+			System.out.print(i+1 + ":");
+			System.out.println(x[i]);
+		}
+	}
+
 	public static boolean isSquare(double[][] m){
 		return m.length==m[0].length;
 	}
