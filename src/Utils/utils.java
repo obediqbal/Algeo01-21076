@@ -11,14 +11,14 @@ public class utils {
                 m[i][j]=obj.nextDouble();
             }
         }
-		obj.close();
+		//obj.close();
 	}
 	public static double[][] makeMatrix(){
 		Scanner obj=new Scanner(System.in);
 		int n=obj.nextInt();
 		int ma=obj.nextInt();
 		double[][] m=new double[n][ma];
-		obj.close();
+		//obj.close();
 		readMatrix(m, n, ma);
 		return m;
 	}
