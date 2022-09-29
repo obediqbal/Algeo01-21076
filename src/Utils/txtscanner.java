@@ -2,8 +2,6 @@ package Utils;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.Scanner;
 
 public class txtscanner {
@@ -36,6 +34,7 @@ public class txtscanner {
                 i++;
             }
         }
+        obj.close();
         return m;
     }
     public static int[] getMatrixsize(String file) throws FileNotFoundException{
@@ -55,6 +54,8 @@ public class txtscanner {
         }
         x[0]=rowCount;
         x[1]=colCount/rowCount;
+        scancol.close();
+        scanrow.close();
         return x;
     }
 }
