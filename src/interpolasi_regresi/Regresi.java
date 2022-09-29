@@ -76,5 +76,10 @@ public class Regresi {
             result=result+solusi[i]*x[i-1];
         }
         System.out.println("hasil taksiran: "+result);
+        System.out.print("\n");
+        System.out.println("file:");
+        String file=obj.nextLine();
+        file=obj.nextLine();
+        Utils.txtwriter.writeRegresi(reg1, solusi, result, x, file);
     }
 }
