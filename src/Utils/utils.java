@@ -36,6 +36,14 @@ public class utils {
         }
 	}
 	
+	public static void forceCopyMatrix(double[][] min, double[][] mout){
+		for(int i=0; i<min.length;i++){
+			for(int j=0; j<min[0].length;j++){
+				mout[i][j]=min[i][j];
+			}
+		}	
+	}
+
 	public static void copyMatrix(double[][] min, double[][] mout) {
 		if(isSameSize(min, mout)){
 			for(int i=0; i<min.length;i++){
@@ -55,7 +63,7 @@ public class utils {
 		}
 	}
 
-	public static double max(double a, double b){
+	public static int max(int a, int b){
 		if(a>b) return a;
 		else return b;
 	}
