@@ -120,10 +120,15 @@ public class spl {
 		}
 
 		res = new double[m[0].length-1][1];
+		Matriks.fillNaN(res);
 		int i;
+		int var;
 		for(i=0; i<m.length; i++){
-			OBE.multdivrows(nm, false, i, nm[i][i]);
-			res[i][0] = nm[i][m[i].length-1];
+			var=findBaseVarIdx(nm, i);
+			if(var!=-1 && isSole(nm, i)){
+				if(nm[i][i]!=1 && nm[i][i]!=0) OBE.multdivrows(nm, false, i, nm[i][i]);
+				res[var][0] = nm[i][m[i].length-1];
+			}
 		}
 		return res;
 	}
@@ -134,8 +139,8 @@ public class spl {
 		// utils.readMatrix(m, a, b);
 		// double[][] m = {{1, -1, 2, 5}, {2, -2, 4, 10}, {3, -1, 6, 15}}; //parametrik
 		// double[][] m ={{2,3,-1,5},{-2,3,-1,1},{4,4,-3,3}}; // punya solusi
-        double m[][] = {{1,3,-2,0,2,0,0},{2,6,-5,-2,4,-3,-1},{0,0,5,10,0,15,5},{2,6,0,8,4,18,6}}; // parametrik
-		// double[][] m = {{1,2,1,1},{2,2,0,2},{3,4,1,2}}; //Tidak ada solusi
+        // double m[][] = {{1,3,-2,0,2,0,0},{2,6,-5,-2,4,-3,-1},{0,0,5,10,0,15,5},{2,6,0,8,4,18,6}}; // parametrik
+		double[][] m = {{1,2,1,1},{2,2,0,2},{3,4,1,2}}; //Tidak ada solusi
 		// utils.printMatrix(m);
 		double[][] res = eliminasiGaussJordan(m);
 		// double[][] res = eliminasiGauss(m);
