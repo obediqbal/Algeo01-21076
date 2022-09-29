@@ -70,4 +70,8 @@ public class Matriks {
             }
         }
     }
+    public static double[][] multiplyMatrix(double[][] a, double[][] b){
+        double[][] newm= new double[a[0].length][b.length];
+        return newm;
+    }
 }
