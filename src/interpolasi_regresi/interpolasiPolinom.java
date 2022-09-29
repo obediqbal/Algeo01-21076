@@ -65,7 +65,6 @@ public class interpolasiPolinom {
 		for(int i=0;i<xs.length;i++){
 			result=result+Math.pow(x, i)*xs[i];
 		}
-		obj.close();
 		System.out.println(result);
 	}
 }

@@ -138,7 +138,7 @@ public class spl {
 		}
 		return res;
 	}
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		int a = 3;
 		int b = 4;
 		// double[][] m = new double[a][b];
@@ -152,5 +152,5 @@ public class spl {
 		// double[][] res = eliminasiGauss(m);
 		// res = eliminasiGauss(m);
 		utils.printSolusi(res);;
-	}
+	}*/
 }
