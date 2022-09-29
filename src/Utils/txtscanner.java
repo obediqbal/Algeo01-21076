@@ -20,8 +20,6 @@ public class txtscanner {
         }
         
         m= new double[maxrow][maxcol];
-        System.out.println(maxrow);
-        System.out.println(maxcol);
         int i=0;
         int j=0;
         while (obj.hasNextDouble()){

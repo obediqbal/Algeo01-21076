@@ -118,4 +118,8 @@ public class utils {
 			System.out.print(x[i]+"\n");
 		}
 	}
+
+	public static boolean isSquare(double[][] m){
+		return m.length==m[0].length;
+	}
 }
