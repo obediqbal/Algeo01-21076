@@ -3,16 +3,15 @@ import Matrix.determinant;
 import Utils.utils;
 
 public class Matriks {
-    public static void transpose(double[][] m){
-        double transpose[][] = new double[3][3];
+    public static double[][] transpose(double[][] m){
+        double transpose[][] = new double[m[0].length][m.length];
         int i, j;
         for (i = 0; i < m.length; i++) {
-            for (j = 0; j < m.length; j++) {
-                transpose[i][j] = m[j][i];
-                System.out.print(" ");
+            for (j = 0; j < m[0].length; j++) {
+                transpose[j][i] = m[i][j];
             }
-            System.out.println();
-        }   
+        }
+        return transpose;
     }
 
     public static double[][] kofaktor(double[][] m, int a, int b){
@@ -71,9 +70,9 @@ public class Matriks {
         }
     }
     public static double[][] multiplyMatrix(double[][] a, double[][] b){
-        double[][] newm= new double[a[0].length][b.length];
+        double[][] newm= new double[a.length][b[0].length];
         for(int i=0;i<a.length;i++){
-            for(int j=0;j<b.length;j++){
+            for(int j=0;j<b[0].length;j++){
                 newm[i][j]=0;
                 for(int k=0;k<a[0].length;k++){
                     newm[i][j]=newm[i][j]+a[i][k]*b[k][j];
