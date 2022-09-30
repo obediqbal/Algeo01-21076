@@ -120,16 +120,26 @@ public class spl {
 			for(int i = var+1; i<res.length-1; i++){
 				if(res[i]!=0 && Double.isNaN(rawres[i])){
 					if(res[i]>0 && !s.isEmpty()){
-						s += "+";
+						s += " + ";
 					}
-					s += res[i]+"x"+(i+1);
+					if(res[i]<0){
+						if(!s.isEmpty()) s += " - ";
+						else s += "-";
+					}
+					if(res[i]!=1){
+						s += utils.abs(res[i]);
+					}
+					s += "x"+(i+1);
 				}
 			}
 			if(res[res.length-1]!=0){
 				if(res[res.length-1]>0){
-					s += "+";
+					s += " + ";
 				}
-				s += res[res.length-1];
+				else if(res[res.length-1]<0){
+					s += " - ";
+				}
+				s += utils.abs(res[res.length-1]);
 			}
 		}
 		return s;
@@ -188,25 +198,49 @@ public class spl {
 		// }
 
 		if(findNaN(res)!=-1){
+			boolean found = false;
 			double[][] nres = new double[res.length][res.length+1];
 			for(i=m.length-1; i>=0; i--){
 				var = findBaseVarIdx(nm, i);
 				if(var!=-1){
-					// System.out.println();
-					for(j=var+1; j<m[0].length-1; j++){
+					for(j=var+1; j<m[0].length-1; j++){ // assign reduced echlon result into new result matrix
 						nres[var][j] = -nm[i][j];
 						// System.out.print(nres[var][j] + " ");
 					}
-					// System.out.println();
+					System.out.println();
 					nres[var][nres[0].length-1] = nm[i][m[0].length-1];
 
+					// System.out.println("nres");
+					// utils.printMatrix(nres);
+					// System.out.println();
+
+					// j=var+1;
+					// if(!Double.isNaN(res[j])){
+					// 	System.out.println(nres[var][nres.length] + " : " + nres[var][j] + " * " + res[j]);
+					// 	nres[var][nres.length] += nres[var][j]*res[j];
+					// 	System.out.println(nres[var][nres.length]);
+					// }
+					// if(!isAllZero(nres[j]) && nres[var][j]!=0 && Double.isNaN(res[j])){
+					// 	// System.out.println();
+					// 	// System.out.println((var+1) + " : " + (j+1));
+					// 	addList(nres[var], mulitplyList(nres[j], nres[var][j]));
+					// 	nres[var][j] = 0;
+					// }
+
 					for(j=var+1; j<m[0].length-1; j++){
+						if(!Double.isNaN(res[j])){
+							System.out.println(var);
+							System.out.print(nres[var][nres.length] + " + " + nres[var][j] + " * " + res[j]);
+							nres[var][nres.length] += nres[var][j]*res[j];
+							System.out.println(" = "+nres[var][nres.length]);
+						}
 						if(!isAllZero(nres[j]) && nres[var][j]!=0 && Double.isNaN(res[j])){
 							// System.out.println();
 							// System.out.println((var+1) + " : " + (j+1));
 							addList(nres[var], mulitplyList(nres[j], nres[var][j]));
 							nres[var][j] = 0;
 						}
+						System.out.println();
 					}
 				}
 			}
@@ -264,7 +298,7 @@ public class spl {
 		// utils.readMatrix(m, a, b);
 		// double[][] m = {{1, -1, 2, 5}, {2, -2, 4, 10}, {3, -1, 6, 15}}; //parametrik
 		// double[][] m ={{2,3,-1,5},{-2,3,-1,1},{4,4,-3,3}}; // punya solusi
-        // double m[][] = {{1,3,-2,0,2,0,0},{2,6,-5,-2,4,-3,-1},{0,0,5,10,0,15,5},{2,6,0,8,4,18,6}}; // parametrik
+        double m[][] = {{1,3,-2,0,2,0,0},{2,6,-5,-2,4,-3,-1},{0,0,5,10,0,15,5},{2,6,0,8,4,18,6}}; // parametrik
 		// double[][] m = {{1,2,1,1},{2,2,0,2},{3,4,1,2}}; //Tidak ada solusi
 		// utils.printMatrix(m);
 		
