@@ -29,7 +29,13 @@ public class OBE {
             else
             m[x][j] = m[x][j] / multiplydigit;
         }   
-    }  
+    }
+    public static int findBaseVarIdx(double[][] m, int row){
+		for(int i = 0; i<m[0].length-1; i++){
+			if(m[row][i]!=0) return i;
+		}
+		return -1;
+	}
     public static void triangleup(double[][] m){
         int i, j;
         double multiplydigit;
@@ -99,6 +105,15 @@ public class OBE {
             //System.out.println();
             //utils.printMatrix(m);
             toprow++;
+        }
+
+        if(reduced){
+            for(int i = 0; i<m.length; i++){
+                idx = findBaseVarIdx(m, i);
+                if(idx!=-1 && m[i][idx]!=1.0){
+                    multdivrows(m, false, i, m[i][idx]);
+                }
+            }
         }
     }
 

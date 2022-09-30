@@ -59,13 +59,6 @@ public class spl {
 		return false;
 	}
 
-	private static int findBaseVarIdx(double[][] m, int row){
-		for(int i = 0; i<m[0].length-1; i++){
-			if(m[row][i]!=0) return i;
-		}
-		return -1;
-	}
-
 	private static String[] listDoubleToString(double[] m){
 		String[] nm = new String[m.length];
 		for(int i = 0; i<m.length; i++){
@@ -151,7 +144,7 @@ public class spl {
 			boolean found = false;
 			double[][] nres = new double[res.length][res.length+1];
 			for(i=m.length-1; i>=0; i--){
-				var = findBaseVarIdx(nm, i);
+				var = OBE.findBaseVarIdx(nm, i);
 				if(var!=-1){
 					for(j=var+1; j<m[0].length-1; j++){ // assign reduced echlon result into new result matrix
 						nres[var][j] = -nm[i][j];
@@ -220,7 +213,7 @@ public class spl {
 		int i, j;
 		int var;
 		for(i=m.length-1; i>=0; i--){
-			var = findBaseVarIdx(nm, i);
+			var = OBE.findBaseVarIdx(nm, i);
 			if(var!=-1){
 				res[var] = nm[i][nm.length-1];
 				j = var+1;
@@ -238,7 +231,11 @@ public class spl {
 		double[][] nm = new double[m[0].length][m[0].length];
 		utils.forceCopyMatrix(m, nm);
 		OBE.toEchelon(nm, false);
-		
+
+		System.out.println();
+		utils.printMatrix(nm);
+		System.out.println();
+
 		double[] res = eliminasiGauss(m);
 		return resListToParametric(res, m, nm, parametric);
 	} 
@@ -264,7 +261,7 @@ public class spl {
 		int i;
 		int var;
 		for(i=0; i<m.length; i++){
-			var=findBaseVarIdx(nm, i);
+			var=OBE.findBaseVarIdx(nm, i);
 			if(var!=-1 && isSole(nm, i)){
 				if(nm[i][i]!=1 && nm[i][i]!=0) OBE.multdivrows(nm, false, i, nm[i][i]);
 				res[var] = nm[i][m[i].length-1];
@@ -277,6 +274,10 @@ public class spl {
 		double[][] nm = new double[m[0].length][m[0].length];
 		utils.forceCopyMatrix(m, nm);
 		OBE.toEchelon(nm, true);
+
+		System.out.println();
+		utils.printMatrix(nm);
+		System.out.println();
 		
 		double[] res = eliminasiGaussJordan(m);
 		return resListToParametric(res, m, nm, parametric);
@@ -286,10 +287,10 @@ public class spl {
 	// 	int b = 4;
 	// 	// double[][] m = new double[a][b];
 	// 	// utils.readMatrix(m, a, b);
-	// 	double[][] m = {{1, -1, 2, 5}, {2, -2, 4, 10}, {3, -1, 6, 15}}; //parametrik
+	// 	// double[][] m = {{1, -1, 2, 5}, {2, -2, 4, 10}, {3, -1, 6, 15}}; //parametrik
 	// 	// double[][] m ={{2,3,-1,5},{-2,3,-1,1},{4,4,-3,3}}; // punya solusi
 	// 	// double[][] m ={{2,3,-1,5},{4,4,-3,3},{-2,3,-1,1}}; // punya solusi
-    //     // double m[][] = {{1,3,-2,0,2,0,0},{2,6,-5,-2,4,-3,-1},{0,0,5,10,0,15,5},{2,6,0,8,4,18,6}}; // parametrik
+    //     double m[][] = {{1,3,-2,0,2,0,0},{2,6,-5,-2,4,-3,-1},{0,0,5,10,0,15,5},{2,6,0,8,4,18,6}}; // parametrik
 	// 	// double[][] m = {{1,2,1,1},{2,2,0,2},{3,4,1,2}}; //Tidak ada solusi
 	// 	// utils.printMatrix(m);
 		
@@ -299,10 +300,10 @@ public class spl {
 	// 	// utils.printSolusi(res);;
 	// 	String[] gres = eliminasiGauss(m, true);
 	// 	// double[] dres = eliminasiGauss(m);
-	// 	String[] gjres = eliminasiGaussJordan(m, true);
 	// 	// double[] dres = eliminasiGaussJordan(m);
 	// 	System.out.println();
 	// 	utils.printSolusi(gres);
+	// 	String[] gjres = eliminasiGaussJordan(m, true);
 	// 	System.out.println();
 	// 	utils.printSolusi(gjres);
 	// 	// double[][] res = eliminasiGauss(m);
