@@ -154,4 +154,35 @@ public class utils {
 			}
 		}
 	}
+
+	public static double[][] matrixtoAugmented(double[][] a, double[][] b){
+		double[][] m = new double[a.length][a[0].length+1];
+		for(int i=0; i<m.length;i++){
+			for (int j=0;j<m[0].length;j++){
+				if(j<m[0].length-1){
+					m[i][j]=a[i][j];
+				}
+				else if(j==m[0].length-1){
+					m[i][j]=b[i][0];
+				}
+			}
+		}
+		return m;
+	}
+
+	public static double sumCol(double[][] m,int j){
+		double sum=0;
+		for(int i=0;i<m.length;i++){
+			sum+=m[i][j];
+		}
+		return sum;
+	}
+
+	public static double sumRow(double[][] m, int i){
+		double sum=0;
+		for(int j=0;j<m[0].length;j++){
+			sum+=m[i][j];
+		}
+		return sum;
+	}
 }

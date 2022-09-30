@@ -1,6 +1,7 @@
 import java.io.IOException;
 import java.util.Scanner;
 import Utils.*;
+import interpolasi_regresi.Regresi;
 import interpolasi_regresi.interpolasiPolinom;
 import Matrix.*;
 
@@ -18,11 +19,19 @@ class Main{
         System.out.println();
         m3=Matriks.multiplyMatrix(m1, m2);
         utils.printMatrix(m3);*/
-        /*String file = obj.nextLine();
-        file = "C:\\Users\\User\\Documents\\algeo\\Algeo01-21076\\test\\"+file;
+        String file = obj.nextLine();
+        //String file2 = obj.nextLine();
+        //file = "C:/Users/User/Documents/algeo/Algeo01-21076/test/"+file;
         double[][] m;
+        //double[][] m2;
+        //double[][] newm;
         m=txtscanner.getMatrixFile(file);
-        utils.printMatrix(m);*/
+        //m2=txtscanner.getMatrixFile(file2);
+        //newm = Matriks.multiplyMatrix(m, m2);
+        //utils.printMatrix(newm);
+        //System.out.println("aaaaa");
+        //utils.printMatrix(m);
+        Regresi.regresi(m);
         //Utils.utils.getMenu();
         //int n=obj.nextInt();
         //int ma=obj.nextInt();
