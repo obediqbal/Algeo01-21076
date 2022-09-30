@@ -40,9 +40,9 @@ class Main{
         //utils.readMatrix(m,n,ma);
         //utils.printMatrix(m);
         double[] solusi;
-        solusi = spl.cramer(m);
+        solusi = spl.eliminasiGauss(m);
         String saveFile=obj.nextLine();
-        txtwriter.writeCramer(saveFile, solusi);
+        txtwriter.writeSolusi(saveFile, solusi);
         //interpolasiPolinom.interpolasipol(file);
         //Matriks.adjoint(m);
         //utils.printMatrix(m); C:\\Users\\User\\Documents\\algeo

@@ -89,7 +89,7 @@ public class txtwriter {
         out.close();
     }
 
-    public static void writeCramer(String file, double[] solusi){
+    public static void writeSolusi(String file, double[] solusi){
         PrintWriter out =null;
         try {
             out = new PrintWriter(file);
@@ -97,7 +97,7 @@ public class txtwriter {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        out.println("solusi menggunakan metode cramer");
+        out.println("solusi: ");
         for(int i=0;i<solusi.length;i++){
             out.print("x"+(i+1)+"= ");
             out.print(solusi[i]);
