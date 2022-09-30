@@ -207,12 +207,12 @@ public class spl {
 						nres[var][j] = -nm[i][j];
 						// System.out.print(nres[var][j] + " ");
 					}
-					System.out.println();
+					// System.out.println();
 					nres[var][nres[0].length-1] = nm[i][m[0].length-1];
 
-					// System.out.println("nres");
-					// utils.printMatrix(nres);
-					// System.out.println();
+					System.out.println("\nnres");
+					utils.printMatrix(nres);
+					System.out.println();
 
 					// j=var+1;
 					// if(!Double.isNaN(res[j])){
@@ -228,7 +228,8 @@ public class spl {
 					// }
 
 					for(j=var+1; j<m[0].length-1; j++){
-						if(!Double.isNaN(res[j])){
+						if(!Double.isNaN(res[j]) && !found){
+							found = true;
 							System.out.println(var);
 							System.out.print(nres[var][nres.length] + " + " + nres[var][j] + " * " + res[j]);
 							nres[var][nres.length] += nres[var][j]*res[j];
@@ -298,12 +299,12 @@ public class spl {
 		// utils.readMatrix(m, a, b);
 		// double[][] m = {{1, -1, 2, 5}, {2, -2, 4, 10}, {3, -1, 6, 15}}; //parametrik
 		// double[][] m ={{2,3,-1,5},{-2,3,-1,1},{4,4,-3,3}}; // punya solusi
-        double m[][] = {{1,3,-2,0,2,0,0},{2,6,-5,-2,4,-3,-1},{0,0,5,10,0,15,5},{2,6,0,8,4,18,6}}; // parametrik
+        // double m[][] = {{1,3,-2,0,2,0,0},{2,6,-5,-2,4,-3,-1},{0,0,5,10,0,15,5},{2,6,0,8,4,18,6}}; // parametrik
 		// double[][] m = {{1,2,1,1},{2,2,0,2},{3,4,1,2}}; //Tidak ada solusi
 		// utils.printMatrix(m);
 		
 		// double[][] m ={{1,1,-1,-1,1},{2,5,-7,-5,-2},{2,-1,1,3,4},{5,2,-4,2,6}};
-		// double[][] m = {{1,-1,0,0,1,3},{1,1,0,-3,0,6},{2,-1,0,1,-1,5},{-1,2,0,-2,-1,-1}};
+		double[][] m = {{1,-1,0,0,1,3},{1,1,0,-3,0,6},{2,-1,0,1,-1,5},{-1,2,0,-2,-1,-1}};
 		// String[] res = eliminasiGaussJordan(m);
 		// utils.printSolusi(res);;
 		String[] res = eliminasiGauss(m);
