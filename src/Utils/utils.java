@@ -67,6 +67,11 @@ public class utils {
 		if(a>b) return a;
 		else return b;
 	}
+
+	public static double abs(double a){
+		if(a<0) return -a;
+		return a;
+	}
 	
 	public static void getMenu() {
 		Scanner obj = new Scanner(System.in);
