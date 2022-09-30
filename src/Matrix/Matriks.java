@@ -71,12 +71,18 @@ public class Matriks {
         }
     }
 
-    public static void fillNaN(double[][] m){
+    public static void fillNaN(double[] m){
         for(int i = 0; i<m.length; i++){
-            for(int j = 0; j<m[0].length; j++){
-                m[i][j] = Double.NaN;
+            for(int j = 0; j<m.length; j++){
+                m[i] = Double.NaN;
             }
         }
+    }
+    public static void fillNaN(double[][] m){
+        for(int i = 0; i<m.length; i++){
+            fillNaN(m);
+        }
+    }
     public static double[][] multiplyMatrix(double[][] a, double[][] b){
         double[][] newm= new double[a[0].length][b.length];
         for(int i=0;i<a.length;i++){
