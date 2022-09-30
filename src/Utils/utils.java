@@ -67,6 +67,11 @@ public class utils {
 		if(a>b) return a;
 		else return b;
 	}
+
+	public static double abs(double a){
+		if(a<0) return -a;
+		return a;
+	}
 	
 	public static void getMenu() {
 		Scanner obj = new Scanner(System.in);
@@ -130,10 +135,9 @@ public class utils {
 		for(int i=0;i<x.length;i++){
 			System.out.print("x");
 			System.out.print(i+1 + ":");
-			System.out.println(x[i]);
+			System.out.print(x[i]+"\n");
 		}
 	}
-
 	public static boolean isSquare(double[][] m){
 		return m.length==m[0].length;
 	}
