@@ -84,7 +84,8 @@ public class utils {
 			Matriks.inverse(m);
 		}
 		else if(menu==4){
-			interpolasiPolinom.interpolasipol();
+			String file = obj.nextLine();
+			interpolasiPolinom.interpolasipol(file);
 		}
 	}
 	

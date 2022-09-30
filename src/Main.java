@@ -32,14 +32,14 @@ class Main{
         //utils.printMatrix(newm);
         //System.out.println("aaaaa");
         //utils.printMatrix(m);
-        Regresi.regresi(m);
+        //Regresi.regresi(m);
         //Utils.utils.getMenu();
         //int n=obj.nextInt();
         //int ma=obj.nextInt();
         //double[][] m = new double[n][ma];
         //utils.readMatrix(m,n,ma);
         //utils.printMatrix(m);
-        //interpolasiPolinom.interpolasipol();
+        interpolasiPolinom.interpolasipol(file);
         //Matriks.adjoint(m);
         //utils.printMatrix(m); C:\\Users\\User\\Documents\\algeo
         obj.close();

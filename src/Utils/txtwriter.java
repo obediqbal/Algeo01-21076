@@ -66,4 +66,30 @@ public class txtwriter {
         out.println("hasil taksiran: "+result);
         out.close();
     }
+
+    public static void writeInterpol(String file,double[] xs){
+        PrintWriter out =null;
+        try {
+            out = new PrintWriter(file);
+        } catch (FileNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        out.println("persamaan yang didapat:");
+        out.print("y=");
+		for(int i=0;i<xs.length;i++){
+			out.print(xs[i]);
+			out.print("x^"+i);
+			if(i<xs.length-1){
+				if(xs[i+1]>=0 ){
+					out.print("+");
+				}
+			}
+		}
+        out.close();
+    }
+
+    public static void writeSPL(String file, double[][] m, double[] solusi){
+        PrintWriter out= new PrintWriter(file);
+    }
 }
