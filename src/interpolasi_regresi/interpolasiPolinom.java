@@ -64,10 +64,10 @@ public class interpolasiPolinom {
 		for(int i=0;i<xs.length;i++){
 			result=result+Math.pow(x, i)*xs[i];
 		}
-		System.out.println(result);
+		System.out.println("hasil taksiran: "+result);
 		System.out.println("file:");
 		String saveFile = obj.nextLine();
 		saveFile=obj.nextLine();
-		txtwriter.writeInterpol(saveFile, xs);
+		txtwriter.writeInterpol(saveFile, xs,x,result);
 	}
 }

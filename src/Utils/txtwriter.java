@@ -67,7 +67,7 @@ public class txtwriter {
         out.close();
     }
 
-    public static void writeInterpol(String file,double[] xs){
+    public static void writeInterpol(String file,double[] xs,double x,double result){
         PrintWriter out =null;
         try {
             out = new PrintWriter(file);
@@ -86,6 +86,9 @@ public class txtwriter {
 				}
 			}
 		}
+        out.print("\n");
+        out.println("nilai yang ditaksir: "+x);
+        out.println("hasil taksiran: "+result);
         out.close();
     }
 
