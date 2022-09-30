@@ -39,10 +39,10 @@ class Main{
         //double[][] m = new double[n][ma];
         //utils.readMatrix(m,n,ma);
         //utils.printMatrix(m);
-        double[] solusi;
-        solusi = spl.eliminasiGauss(m);
+        String[] solusi;
+        solusi = spl.eliminasiGauss(m,true);
         String saveFile=obj.nextLine();
-        txtwriter.writeSolusi(saveFile, solusi);
+        txtwriter.writeSolusiParametrik(saveFile, solusi);
         //interpolasiPolinom.interpolasipol(file);
         //Matriks.adjoint(m);
         //utils.printMatrix(m); C:\\Users\\User\\Documents\\algeo

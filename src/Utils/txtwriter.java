@@ -97,12 +97,40 @@ public class txtwriter {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        out.println("solusi: ");
-        for(int i=0;i<solusi.length;i++){
-            out.print("x"+(i+1)+"= ");
-            out.print(solusi[i]);
-            out.print("\n");
+        if(solusi.length>0){
+            out.println("solusi: ");
+            for(int i=0;i<solusi.length;i++){
+                out.print("x"+(i+1)+"= ");
+                out.print(solusi[i]);
+                out.print("\n");
+            }
         }
+        else{
+            out.println("tidak ada solusi");
+        }
+        
+        out.close();
+    }
+    public static void writeSolusiParametrik(String file, String[] solusi){
+        PrintWriter out =null;
+        try {
+            out = new PrintWriter(file);
+        } catch (FileNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        if(solusi.length>0){
+            out.println("solusi: ");
+            for(int i=0;i<solusi.length;i++){
+                out.print("x"+(i+1)+"= ");
+                out.print(solusi[i]);
+                out.print("\n");
+            }
+        }
+        else{
+            out.println("tidak ada solusi");
+        }
+        
         out.close();
     }
 }
