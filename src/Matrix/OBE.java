@@ -96,8 +96,8 @@ public class OBE {
                     addsubrows(m, false, i, toprow);
                 }
             }
-            System.out.println();
-            utils.printMatrix(m);
+            //System.out.println();
+            //utils.printMatrix(m);
             toprow++;
         }
     }

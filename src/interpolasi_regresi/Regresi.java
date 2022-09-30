@@ -1,10 +1,14 @@
 package interpolasi_regresi;
 
+import java.util.Scanner;
+
 import Matrix.Matriks;
+import Matrix.spl;
 import Utils.utils;
 
 public class Regresi {
     public static void regresi(double[][] m){
+        Scanner obj = new Scanner(System.in);
         double[][] a = new double[m.length][m[0].length-1];
         double[][] at = new double[m.length][m[0].length-1];
         double[][] kiri = new double[m.length][m[0].length-1];
@@ -44,6 +48,38 @@ public class Regresi {
                 }
             }
         }
+        double[] solusi=spl.eliminasiGauss(reg1);
+        System.out.println("matrix hasil normal estimation equation:");
         utils.printMatrix(reg1);
+        System.out.println("persamaan regresi linier berganda:");
+        System.out.print("y=");
+        for (int i=0;i<solusi.length;i++){
+            if(solusi[i]>0){
+                System.out.print("+ ");
+            }
+            System.out.print(solusi[i]);
+            
+            if(i>0){
+                System.out.print("x"+i);
+            }
+            System.out.print(" ");
+            
+        }
+        double[] x= new double[3];
+        System.out.print("\n");
+        System.out.println("masukkan 3 peubah yang akan ditaksir");
+        for (int i=0;i<x.length;i++){
+            x[i]=obj.nextDouble();
+        }
+        double result=solusi[0];
+        for(int i=1;i<solusi.length;i++){
+            result=result+solusi[i]*x[i-1];
+        }
+        System.out.println("hasil taksiran: "+result);
+        System.out.print("\n");
+        System.out.println("file:");
+        String file=obj.nextLine();
+        file=obj.nextLine();
+        Utils.txtwriter.writeRegresi(reg1, solusi, result, x, file);
     }
 }

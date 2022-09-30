@@ -89,7 +89,8 @@ public class utils {
 			Matriks.inverse(m);
 		}
 		else if(menu==4){
-			interpolasiPolinom.interpolasipol();
+			String file = obj.nextLine();
+			interpolasiPolinom.interpolasipol(file);
 		}
 	}
 	
@@ -97,7 +98,6 @@ public class utils {
 		Scanner obj = new Scanner(System.in);
 		System.out.println("1. Metode eliminasi Gauss\n 2. Metode eliminasi Gauss-Jordan\n 3. Metode matriks balikan\n 4. Kaidah Cramer\n");
 		int menu=obj.nextInt();
-		obj.close();
 		/*if(menu==1){
 			spl.eliminasiGauss();
 		}
@@ -117,7 +117,6 @@ public class utils {
 		Scanner obj = new Scanner(System.in);
 		System.out.println("1. Metode ekspansi kofaktor\n 2. Metode reduksi baris\n");
 		int menu=obj.nextInt();
-		obj.close();
 	}
 
 	public static boolean isSameSize(double[][] m1, double[][] m2){

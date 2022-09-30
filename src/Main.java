@@ -26,19 +26,24 @@ class Main{
         //double[][] m2;
         //double[][] newm;
         m=txtscanner.getMatrixFile(file);
+        //txtwriter.writeMatrix(m, file);
         //m2=txtscanner.getMatrixFile(file2);
         //newm = Matriks.multiplyMatrix(m, m2);
         //utils.printMatrix(newm);
         //System.out.println("aaaaa");
         //utils.printMatrix(m);
-        Regresi.regresi(m);
+        //Regresi.regresi(m);
         //Utils.utils.getMenu();
         //int n=obj.nextInt();
         //int ma=obj.nextInt();
         //double[][] m = new double[n][ma];
         //utils.readMatrix(m,n,ma);
         //utils.printMatrix(m);
-        //interpolasiPolinom.interpolasipol();
+        double[] solusi;
+        solusi = spl.cramer(m);
+        String saveFile=obj.nextLine();
+        txtwriter.writeCramer(saveFile, solusi);
+        //interpolasiPolinom.interpolasipol(file);
         //Matriks.adjoint(m);
         //utils.printMatrix(m); C:\\Users\\User\\Documents\\algeo
         obj.close();

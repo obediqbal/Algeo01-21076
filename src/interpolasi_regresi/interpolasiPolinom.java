@@ -1,19 +1,20 @@
 package interpolasi_regresi;
 import Matrix.*;
 import Utils.txtscanner;
+import Utils.txtwriter;
 import Utils.utils;
 
 import java.util.Scanner;
 
 public class interpolasiPolinom {
-	public static void interpolasipol() {
+	public static void interpolasipol(String file) {
 		//n: banyak titik
 		//m: spl
 		Scanner obj = new Scanner(System.in);
 		double[] xs =null;
 		double[][] p=null;
 		double[][] m=null;
-		System.out.println("apakah masukan dari keyboard(y)/file(n)");
+		/*System.out.println("apakah masukan dari keyboard(y)/file(n)");
 		String masukan=obj.nextLine();
 		System.out.println(masukan);
 		if (masukan.equals("y")){
@@ -30,12 +31,10 @@ public class interpolasiPolinom {
 			}
 			
 		}
-		else if(masukan.equals("n")){
-			System.out.println("nama file beserta path nya");
-			String file=obj.nextLine();
-			p=txtscanner.getMatrixFile(file);
-			m=new double[p.length][p.length+1];
-		}
+		else if(masukan.equals("n")){*/
+		p=txtscanner.getMatrixFile(file);
+		m=new double[p.length][p.length+1];
+		//}
 		System.out.println("persamaan interpolasi polinom:");
 		System.out.print("y=");
 		for (int i=0;i<p.length;i++){
@@ -65,7 +64,10 @@ public class interpolasiPolinom {
 		for(int i=0;i<xs.length;i++){
 			result=result+Math.pow(x, i)*xs[i];
 		}
-		obj.close();
 		System.out.println(result);
+		System.out.println("file:");
+		String saveFile = obj.nextLine();
+		saveFile=obj.nextLine();
+		txtwriter.writeInterpol(saveFile, xs);
 	}
 }
