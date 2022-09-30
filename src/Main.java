@@ -39,7 +39,11 @@ class Main{
         //double[][] m = new double[n][ma];
         //utils.readMatrix(m,n,ma);
         //utils.printMatrix(m);
-        interpolasiPolinom.interpolasipol(file);
+        double[] solusi;
+        solusi = spl.cramer(m);
+        String saveFile=obj.nextLine();
+        txtwriter.writeCramer(saveFile, solusi);
+        //interpolasiPolinom.interpolasipol(file);
         //Matriks.adjoint(m);
         //utils.printMatrix(m); C:\\Users\\User\\Documents\\algeo
         obj.close();

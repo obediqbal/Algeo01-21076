@@ -89,7 +89,20 @@ public class txtwriter {
         out.close();
     }
 
-    public static void writeSPL(String file, double[][] m, double[] solusi){
-        PrintWriter out= new PrintWriter(file);
+    public static void writeCramer(String file, double[] solusi){
+        PrintWriter out =null;
+        try {
+            out = new PrintWriter(file);
+        } catch (FileNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        out.println("solusi menggunakan metode cramer");
+        for(int i=0;i<solusi.length;i++){
+            out.print("x"+(i+1)+"= ");
+            out.print(solusi[i]);
+            out.print("\n");
+        }
+        out.close();
     }
 }
