@@ -30,50 +30,50 @@ public class OBE {
             m[x][j] = m[x][j] / multiplydigit;
         }   
     }
-    public static int findBaseVarIdx(double[][] m, int row){
+    public static int findBaseVarIdx(double[][] m, int x){
 		for(int i = 0; i<m[0].length-1; i++){
-			if(m[row][i]!=0) return i;
+			if(m[x][i]!=0) return i;
 		}
 		return -1;
 	}
-    public static void triangleup(double[][] m){
-        int i, j;
-        double multiplydigit;
+    // public static void triangleup(double[][] m){
+    //     int i, j;
+    //     double multiplydigit;
         
-        for (i = 1; i < m.length; i++){
-            for (j = 0; j < i; j++){
-                multiplydigit = m[j][j] / m[i][j];
-                multdivrows(m, true, i, multiplydigit);
-                addsubrows(m, false, i, j);
-            }
-        }
-    }
-    public static void triangledown(double[][] m){
-        int i, j;
-        double multiplydigit;
+    //     for (i = 1; i < m.length; i++){
+    //         for (j = 0; j < i; j++){
+    //             multiplydigit = m[j][j] / m[i][j];
+    //             multdivrows(m, true, i, multiplydigit);
+    //             addsubrows(m, false, i, j);
+    //         }
+    //     }
+    // }
+    // public static void triangledown(double[][] m){
+    //     int i, j;
+    //     double multiplydigit;
         
-        for (i = m.length-1; i >= 0; i--){
-            for (j = m.length-1; j > i; j--){
-                multiplydigit = m[j][j] / m[i][j];
-                multdivrows(m, true, i, multiplydigit);
-                addsubrows(m, false, i, j);
-                // System.out.println("mult:"+multiplydigit);
-                // System.out.print(i + ":" + j + " ");
-            }
-        }
-    }
-    private static int findNonZero(double[][] m, int col, int a, int b){
+    //     for (i = m.length-1; i >= 0; i--){
+    //         for (j = m.length-1; j > i; j--){
+    //             multiplydigit = m[j][j] / m[i][j];
+    //             multdivrows(m, true, i, multiplydigit);
+    //             addsubrows(m, false, i, j);
+    //             // System.out.println("mult:"+multiplydigit);
+    //             // System.out.print(i + ":" + j + " ");
+    //         }
+    //     }
+    // }
+    private static int findNonZero(double[][] m, int y, int a, int b){
         for(int i = a; i<b; i++){
-            if(m[i][col]!=0) return i;
+            if(m[i][y]!=0) return i;
         }
         return -1;
     }
-    public static boolean isColumnZero(double[][] m, int col, int a, int b){
-        return findNonZero(m, col, a, b)==-1;
+    public static boolean isColumnZero(double[][] m, int y, int a, int b){
+        return findNonZero(m, y, a, b)==-1;
     }
-    public static boolean isRowZero(double[][] m, int row, int a, int b){
+    public static boolean isRowZero(double[][] m, int x, int a, int b){
         for(int j = a; j<b; j++){
-            if(m[row][j]!=0) return false;
+            if(m[x][j]!=0) return false;
         }return true;
     }
     public static void toEchelon(double[][] m, boolean reduced){
