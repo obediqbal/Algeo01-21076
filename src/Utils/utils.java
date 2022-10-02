@@ -6,6 +6,7 @@ import interpolasi_regresi.interpolasiPolinom;
 public class utils {
 	public static void readMatrix(double[][] m,int n,int ma) {
 		Scanner obj = new Scanner(System.in);
+		System.out.println("masukkan matrix: ");
 		for(int i=0; i<n;i++){
             for(int j=0;j<ma;j++){
                 m[i][j]=obj.nextDouble();
@@ -15,6 +16,7 @@ public class utils {
 	}
 	public static double[][] makeMatrix(){
 		Scanner obj=new Scanner(System.in);
+		System.out.println("masukkan banyak baris dan kolom matrix: ");
 		int n=obj.nextInt();
 		int ma=obj.nextInt();
 		double[][] m=new double[n][ma];
@@ -73,11 +75,10 @@ public class utils {
 		return a;
 	}
 	
-	public static void getMenu() {
+	public static void getMenu(int isRun) {
 		Scanner obj = new Scanner(System.in);
 		System.out.println("MENU\n 1. Sistem Persamaaan Linier\n 2. Determinan\n 3. Matriks balikan\n 4. Interpolasi Polinom\n 5. Interpolasi Bicubic\n 6. Regresi linier berganda\n 7. Keluar\n");
 		int menu=obj.nextInt();
-		obj.close();
 		if(menu==1){
 			splMenu();
 		}
@@ -85,12 +86,60 @@ public class utils {
 			determinantMenu();
 		}
 		else if(menu==3){
-			double[][] m=makeMatrix();
-			Matriks.inverse(m);
+			double[][] m=null;
+			System.out.println("input dari keyboard(1) atau file(2): ");
+			int fileorKey=obj.nextInt();
+			while(fileorKey!=1 && fileorKey !=2){
+				System.out.println("input salah, ulangi input: ");
+				fileorKey=obj.nextInt();
+			}
+			if(fileorKey==1){
+				m=makeMatrix();
+			}
+			else if (fileorKey==2){
+				System.out.println("masukkan nama file beserta path nya: ");
+				String fileName = obj.nextLine();
+				m = txtscanner.getMatrixFile(fileName);
+			}
+			//System.out.println("1");
+			//printMatrix(m);
+			m=Matriks.inverse(m);
+			//System.out.println("2");
+			printMatrix(m);
+			System.out.println("simpan file?\n simpan(1)\n tidak(2)");
+			int saveFile = obj.nextInt();
+			while(saveFile!=1 && saveFile !=2){
+				System.out.println("input salah, ulangi input: ");
+				saveFile=obj.nextInt();
+			}
+			if(saveFile==1){
+				System.out.println("masukkan nama file beserta path nya: ");
+				String saveFileName = obj.nextLine();
+				txtwriter.writeMatrix(m, saveFileName);
+			}
+			else if (saveFile==2){
+
+			}
 		}
 		else if(menu==4){
+			System.out.println("masukkan nama file beserta path nya: ");
 			String file = obj.nextLine();
 			interpolasiPolinom.interpolasipol(file);
+		}
+		else if(menu==5) {
+			System.out.println("masukkan nama file beserta path nya: ");
+			String file = obj.nextLine();
+			//interpolasiPolinom.
+		}
+		else if(menu==6) {
+			System.out.println("masukkan nama file beserta path nya: ");
+			String file = obj.nextLine();
+			double[][] m=txtscanner.getMatrixFile(file);
+			interpolasi_regresi.Regresi.regresi(m);
+		}
+		else if(menu==7) {
+			System.out.println("Keluar..");
+			isRun--;
 		}
 	}
 	
@@ -98,18 +147,83 @@ public class utils {
 		Scanner obj = new Scanner(System.in);
 		System.out.println("1. Metode eliminasi Gauss\n 2. Metode eliminasi Gauss-Jordan\n 3. Metode matriks balikan\n 4. Kaidah Cramer\n");
 		int menu=obj.nextInt();
-		/*if(menu==1){
-			spl.eliminasiGauss();
+		if(menu==1){
+			double[][] m=null;
+			System.out.println("input dari keyboard(1) atau file(2): ");
+			int fileorKey=obj.nextInt();
+			while(fileorKey!=1 && fileorKey !=2){
+				System.out.println("input salah, ulangi input: ");
+				fileorKey=obj.nextInt();
+			}
+			if(fileorKey==1){
+				m=makeMatrix();
+			}
+			else if (fileorKey==2){
+				System.out.println("masukkan nama file beserta path nya: ");
+				String fileName = obj.nextLine();
+				m = txtscanner.getMatrixFile(fileName);
+			}
+			double[] solusi = spl.eliminasiGauss(m);
+			printMatrix(m);
+			printSolusi(solusi);
 		}
 		else if(menu==2){
-			spl.eliminasiGaussJordan();
+			double[][] m=null;
+			System.out.println("input dari keyboard(1) atau file(2): ");
+			int fileorKey=obj.nextInt();
+			while(fileorKey!=1 && fileorKey !=2){
+				System.out.println("input salah, ulangi input: ");
+				fileorKey=obj.nextInt();
+			}
+			if(fileorKey==1){
+				m=makeMatrix();
+			}
+			else if (fileorKey==2){
+				System.out.println("masukkan nama file beserta path nya: ");
+				String fileName = obj.nextLine();
+				m = txtscanner.getMatrixFile(fileName);
+			}
+			double[] solusi = spl.eliminasiGaussJordan(m);
+			printMatrix(m);
+			printSolusi(solusi);
 		}
 		else if(menu==3){
-			spl.matrixBalikan();
+			double[][] m=null;
+			System.out.println("input dari keyboard(1) atau file(2): ");
+			int fileorKey=obj.nextInt();
+			while(fileorKey!=1 && fileorKey !=2){
+				System.out.println("input salah, ulangi input: ");
+				fileorKey=obj.nextInt();
+			}
+			if(fileorKey==1){
+				m=makeMatrix();
+			}
+			else if (fileorKey==2){
+				System.out.println("masukkan nama file beserta path nya: ");
+				String fileName = obj.nextLine();
+				m = txtscanner.getMatrixFile(fileName);
+			}
+			//spl.matrixBalikan(m);
 		}
 		else if(menu==4){
-			spl.cramer(m, x);
-		}*/
+			double[][] m=null;
+			System.out.println("input dari keyboard(1) atau file(2): ");
+			int fileorKey=obj.nextInt();
+			while(fileorKey!=1 && fileorKey !=2){
+				System.out.println("input salah, ulangi input: ");
+				fileorKey=obj.nextInt();
+			}
+			if(fileorKey==1){
+				m=makeMatrix();
+			}
+			else if (fileorKey==2){
+				System.out.println("masukkan nama file beserta path nya: ");
+				String fileName = obj.nextLine();
+				m = txtscanner.getMatrixFile(fileName);
+			}
+			double[] solusi =spl.cramer(m);
+			
+		}
 		
 	}
 
@@ -117,6 +231,46 @@ public class utils {
 		Scanner obj = new Scanner(System.in);
 		System.out.println("1. Metode ekspansi kofaktor\n 2. Metode reduksi baris\n");
 		int menu=obj.nextInt();
+		if(menu==1) {
+			double[][] m=null;
+			System.out.println("input dari keyboard(1) atau file(2): ");
+			int fileorKey=obj.nextInt();
+			while(fileorKey!=1 && fileorKey !=2){
+				System.out.println("input salah, ulangi input: ");
+				fileorKey=obj.nextInt();
+			}
+			if(fileorKey==1){
+				m=makeMatrix();
+			}
+			else if (fileorKey==2){
+				System.out.println("masukkan nama file beserta path nya: ");
+				String fileName = obj.nextLine();
+				m = txtscanner.getMatrixFile(fileName);
+			}
+			System.out.print("determinant: ");
+			System.out.print(determinant.ekspansiKofaktor(m));
+			System.out.print("\n");
+		}
+		else if(menu==2) {
+			double[][] m=null;
+			System.out.println("input dari keyboard(1) atau file(2): ");
+			int fileorKey=obj.nextInt();
+			while(fileorKey!=1 && fileorKey !=2){
+				System.out.println("input salah, ulangi input: ");
+				fileorKey=obj.nextInt();
+			}
+			if(fileorKey==1){
+				m=makeMatrix();
+			}
+			else if (fileorKey==2){
+				System.out.println("masukkan nama file beserta path nya: ");
+				String fileName = obj.nextLine();
+				m = txtscanner.getMatrixFile(fileName);
+			}
+			System.out.print("determinant: ");
+			System.out.print(determinant.reduksiBaris(m));
+			System.out.print("\n");
+		}
 	}
 
 	public static boolean isSameSize(double[][] m1, double[][] m2){
@@ -131,7 +285,7 @@ public class utils {
 		}
 	}
 
-	public static void printSolusi(String[] x){
+	public static void printSolusiPar(String[] x){
 		for(int i=0;i<x.length;i++){
 			System.out.print("x");
 			System.out.print(i+1 + ":");

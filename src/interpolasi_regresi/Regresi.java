@@ -77,7 +77,7 @@ public class Regresi {
         }
         System.out.println("hasil taksiran: "+result);
         System.out.print("\n");
-        System.out.println("file:");
+        System.out.println("nama dan path untuk menyimpan file:");
         String file=obj.nextLine();
         file=obj.nextLine();
         Utils.txtwriter.writeRegresi(reg1, solusi, result, x, file);

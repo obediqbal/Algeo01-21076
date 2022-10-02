@@ -65,7 +65,7 @@ public class interpolasiPolinom {
 			result=result+Math.pow(x, i)*xs[i];
 		}
 		System.out.println("hasil taksiran: "+result);
-		System.out.println("file:");
+		System.out.println("nama dan path untuk menyimpan file:");
 		String saveFile = obj.nextLine();
 		saveFile=obj.nextLine();
 		txtwriter.writeInterpol(saveFile, xs,x,result);

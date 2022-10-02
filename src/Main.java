@@ -1,13 +1,18 @@
 import java.io.IOException;
 import java.util.Scanner;
 import Utils.*;
-import interpolasi_regresi.Regresi;
-import interpolasi_regresi.interpolasiPolinom;
+import interpolasi_regresi.*;
 import Matrix.*;
 
 class Main{
     public static void main(String[] args) {
         Scanner obj = new Scanner(System.in);
+        int isRun=1;
+        while(isRun!=0) {
+        	utils.getMenu(isRun);
+        	System.out.println(isRun);
+        }
+        
         /*double[][] m1;
         double[][] m2;
         double[][] m3;
@@ -19,20 +24,20 @@ class Main{
         System.out.println();
         m3=Matriks.multiplyMatrix(m1, m2);
         utils.printMatrix(m3);*/
-        String file = obj.nextLine();
+        //String file = obj.nextLine();
         //String file2 = obj.nextLine();
         //file = "C:/Users/User/Documents/algeo/Algeo01-21076/test/"+file;
-        double[][] m;
+        //double[][] m;
         //double[][] m2;
         //double[][] newm;
-        m=txtscanner.getMatrixFile(file);
+        //m=Utils.txtscanner.getMatrixFile(file);
         //txtwriter.writeMatrix(m, file);
         //m2=txtscanner.getMatrixFile(file2);
         //newm = Matriks.multiplyMatrix(m, m2);
         //utils.printMatrix(newm);
         //System.out.println("aaaaa");
         //utils.printMatrix(m);
-        Regresi.regresi(m);
+        //Regresi.regresi(m);
         //Utils.utils.getMenu();
         //int n=obj.nextInt();
         //int ma=obj.nextInt();
@@ -43,7 +48,7 @@ class Main{
         //solusi = spl.eliminasiGaussJordan(m,true);
         //String saveFile=obj.nextLine();
         //txtwriter.writeSolusiParametrik(saveFile, solusi);
-        //interpolasiPolinom.interpolasipol(file);
+        //interpolasi_regresi.interpolasiPolinom.interpolasipol(file);
         //Matriks.adjoint(m);
         //utils.printMatrix(m); C:\\Users\\User\\Documents\\algeo
         obj.close();

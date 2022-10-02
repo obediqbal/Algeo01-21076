@@ -36,18 +36,20 @@ public class Matriks {
 		}
 		return minor;
 	}
-    public static void adjoint(double [][]m){
+    public static double[][] adjoint(double [][]m){
         int i, j;
         int p=1;
         double [][]adj = new double[m.length][m.length];
         for (i = 0; i < m.length; i++){
             for (j = 0; j < m.length; j++){
-                adj[i][j] = p*determinant.ekspansiKofaktor(kofaktor(m, i, j));
-                p=-p;
+                adj[i][j] = determinant.ekspansiKofaktor(kofaktor(m, i, j));
+                //p=-p;
             }   //System.out.print(adj[i][j] + " ");
         }//System.out.println();
-        transpose(adj);
-        m=adj;
+        //utils.printMatrix(adj);
+        adj=transpose(adj);
+        //utils.printMatrix(adj);
+        return adj;
     }
     /*public static void main(String[] args) {
         double[][] m = {{2,3,4},{5,6,7},{8,9,1}};
@@ -60,14 +62,17 @@ public class Matriks {
             }
         }
     }*/
-    public static void inverse(double[][] m){
-        adjoint(m);
+    public static double[][] inverse(double[][] m){
+        m=adjoint(m);
+        //System.out.println("3");
+        //utils.printMatrix(m);
         double per=determinant.ekspansiKofaktor(m);
         for (int i=0;i<m.length;i++){
             for (int j=0;j<m[0].length;j++){
                 m[i][j]=m[i][j]/per;
             }
         }
+        return m;
     }
 
     public static void fillNaN(double[] m){

@@ -308,10 +308,10 @@ public class spl {
 		// double[] dres = eliminasiGauss(m);
 		// double[] dres = eliminasiGaussJordan(m);
 		System.out.println();
-		utils.printSolusi(gres);
+		utils.printSolusiPar(gres);
 		String[] gjres = eliminasiGaussJordan(m, true);
 		System.out.println();
-		utils.printSolusi(gjres);
+		utils.printSolusiPar(gjres);
 		// double[][] res = eliminasiGauss(m);
 		// res = eliminasiGauss(m);
 	}
