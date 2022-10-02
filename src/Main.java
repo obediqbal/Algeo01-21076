@@ -7,10 +7,9 @@ import Matrix.*;
 class Main{
     public static void main(String[] args) {
         Scanner obj = new Scanner(System.in);
-        int isRun=1;
-        while(isRun!=0) {
-        	utils.getMenu(isRun);
-        	System.out.println(isRun);
+        while(!Global.isRun) {
+        	utils.getMenu();
+        	System.out.println(Global.isRun);
         }
         
         /*double[][] m1;

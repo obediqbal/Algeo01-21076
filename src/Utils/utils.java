@@ -75,7 +75,7 @@ public class utils {
 		return a;
 	}
 	
-	public static void getMenu(int isRun) {
+	public static void getMenu() {
 		Scanner obj = new Scanner(System.in);
 		System.out.println("MENU\n 1. Sistem Persamaaan Linier\n 2. Determinan\n 3. Matriks balikan\n 4. Interpolasi Polinom\n 5. Interpolasi Bicubic\n 6. Regresi linier berganda\n 7. Keluar\n");
 		int menu=obj.nextInt();
@@ -139,7 +139,7 @@ public class utils {
 		}
 		else if(menu==7) {
 			System.out.println("Keluar..");
-			isRun--;
+			Global.isRun = false;
 		}
 	}
 	
