@@ -7,6 +7,10 @@ import Matrix.*;
 class Main{
     public static void main(String[] args) {
         Scanner obj = new Scanner(System.in);
+<<<<<<< HEAD
+=======
+        Global.isRun = true;
+>>>>>>> f9927499cc99299f9c1f52cb8eff1c2c0b1dddd9
         while(Global.isRun) {
         	utils.getMenu();
         	//System.out.println(Global.isRun);
