@@ -165,6 +165,7 @@ public class utils {
 			}
 			String[] solusi = spl.eliminasiGauss(m,true);
 			printMatrix(m);
+			//System.out.println(solusi[0]);
 			printSolusiPar(solusi);
 		}
 		else if(menu==2){
@@ -278,19 +279,30 @@ public class utils {
 	}
 
 	public static void printSolusi(double[] x){
-		for(int i=0;i<x.length;i++){
-			System.out.print("x");
-			System.out.print(i+1 + ":");
-			System.out.print(x[i]+"\n");
+		if(x.length>0) {
+			for(int i=0;i<x.length;i++){
+				System.out.print("x");
+				System.out.print(i+1 + ":");
+				System.out.print(x[i]+"\n");
+			}
+		}
+		else {
+			System.out.println("tidak ada solusi");
 		}
 	}
 
 	public static void printSolusiPar(String[] x){
-		for(int i=0;i<x.length;i++){
-			System.out.print("x");
-			System.out.print(i+1 + ":");
-			System.out.print(x[i]+"\n");
+		if(x.length>0) {
+			for(int i=0;i<x.length;i++){
+				System.out.print("x");
+				System.out.print(i+1 + ":");
+				System.out.print(x[i]+"\n");
+			}
 		}
+		else {
+			System.out.println("tidak ada solusi");
+		}
+		
 	}
 	public static boolean isSquare(double[][] m){
 		return m.length==m[0].length;
