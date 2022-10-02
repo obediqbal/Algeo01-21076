@@ -138,7 +138,7 @@ public class utils {
 			interpolasi_regresi.Regresi.regresi(m);
 		}
 		else if(menu==7) {
-			System.out.println("Keluar..");
+			//System.out.println("Keluar..");
 			Global.isRun = false;
 		}
 	}
