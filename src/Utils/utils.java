@@ -163,9 +163,9 @@ public class utils {
 				String fileName = obj.nextLine();
 				m = txtscanner.getMatrixFile(fileName);
 			}
-			double[] solusi = spl.eliminasiGauss(m);
+			String[] solusi = spl.eliminasiGauss(m,true);
 			printMatrix(m);
-			printSolusi(solusi);
+			printSolusiPar(solusi);
 		}
 		else if(menu==2){
 			double[][] m=null;
@@ -183,9 +183,9 @@ public class utils {
 				String fileName = obj.nextLine();
 				m = txtscanner.getMatrixFile(fileName);
 			}
-			double[] solusi = spl.eliminasiGaussJordan(m);
+			String[] solusi = spl.eliminasiGaussJordan(m,true);
 			printMatrix(m);
-			printSolusi(solusi);
+			printSolusiPar(solusi);
 		}
 		else if(menu==3){
 			double[][] m=null;
