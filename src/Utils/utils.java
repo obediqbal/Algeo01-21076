@@ -209,8 +209,6 @@ public class utils {
 			else if (fileorKey==2){
 				System.out.println("masukkan nama file beserta path nya: ");
 				String fileName = obj.nextLine();
-				fileName = obj.nextLine();
-				fileName = obj.nextLine();
 				m = txtscanner.getMatrixFile(fileName);
 			}
 			//spl.matrixBalikan(m);
@@ -229,10 +227,11 @@ public class utils {
 			else if (fileorKey==2){
 				System.out.println("masukkan nama file beserta path nya: ");
 				String fileName = obj.nextLine();
+				fileName = obj.nextLine();
 				m = txtscanner.getMatrixFile(fileName);
 			}
 			double[] solusi =spl.cramer(m);
-			
+			printSolusi(solusi);
 		}
 		
 	}
