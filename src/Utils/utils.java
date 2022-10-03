@@ -1,6 +1,7 @@
 package Utils;
 import java.util.Scanner;
 import Matrix.*;
+import interpolasi_bicubic.Bicubic_Interpolator;
 import interpolasi_regresi.interpolasiPolinom;
 
 public class utils {
@@ -133,6 +134,14 @@ public class utils {
 			System.out.println("masukkan nama file beserta path nya: ");
 			String file = obj.nextLine();
 			file = obj.nextLine();
+			double[][] m=txtscanner.getMatrixFile(file);
+			
+			System.out.println("Masukkan titik");
+			double x = obj.nextDouble();
+			double y = obj.nextDouble();
+			
+			Bicubic_Interpolator bic = new Bicubic_Interpolator(m);
+			System.out.println(bic.solver(x, y));
 			//interpolasiPolinom.
 		}
 		else if(menu==6) {
