@@ -42,12 +42,14 @@ public class Matriks {
         double [][]adj = new double[m.length][m.length];
         for (i = 0; i < m.length; i++){
             for (j = 0; j < m.length; j++){
-                adj[i][j] = determinant.ekspansiKofaktor(kofaktor(m, i, j));
-                //p=-p;
+                adj[i][j] = p*determinant.ekspansiKofaktor(kofaktor(m, i, j));
+                //System.out.println(adj[i][j]);
+                p=-p;
             }   //System.out.print(adj[i][j] + " ");
         }//System.out.println();
         //utils.printMatrix(adj);
         adj=transpose(adj);
+        //utils.printMatrix(adj);
         //utils.printMatrix(adj);
         return adj;
     }
@@ -63,15 +65,17 @@ public class Matriks {
         }
     }*/
     public static double[][] inverse(double[][] m){
+    	double per=determinant.ekspansiKofaktor(m);
         m=adjoint(m);
+        //utils.printMatrix(m);
         //System.out.println("3");
         //utils.printMatrix(m);
-        double per=determinant.ekspansiKofaktor(m);
         for (int i=0;i<m.length;i++){
             for (int j=0;j<m[0].length;j++){
                 m[i][j]=m[i][j]/per;
             }
         }
+        
         return m;
     }
 
