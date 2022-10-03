@@ -99,6 +99,7 @@ public class utils {
 			else if (fileorKey==2){
 				System.out.println("masukkan nama file beserta path nya: ");
 				String fileName = obj.nextLine();
+				fileName = obj.nextLine();
 				m = txtscanner.getMatrixFile(fileName);
 			}
 			//System.out.println("1");
@@ -115,6 +116,7 @@ public class utils {
 			if(saveFile==1){
 				System.out.println("masukkan nama file beserta path nya: ");
 				String saveFileName = obj.nextLine();
+				saveFileName = obj.nextLine();
 				txtwriter.writeMatrix(m, saveFileName);
 			}
 			else if (saveFile==2){
@@ -124,16 +126,19 @@ public class utils {
 		else if(menu==4){
 			System.out.println("masukkan nama file beserta path nya: ");
 			String file = obj.nextLine();
+			file = obj.nextLine();
 			interpolasiPolinom.interpolasipol(file);
 		}
 		else if(menu==5) {
 			System.out.println("masukkan nama file beserta path nya: ");
 			String file = obj.nextLine();
+			file = obj.nextLine();
 			//interpolasiPolinom.
 		}
 		else if(menu==6) {
 			System.out.println("masukkan nama file beserta path nya: ");
 			String file = obj.nextLine();
+			file = obj.nextLine();
 			double[][] m=txtscanner.getMatrixFile(file);
 			interpolasi_regresi.Regresi.regresi(m);
 		}
@@ -161,6 +166,7 @@ public class utils {
 			else if (fileorKey==2){
 				System.out.println("masukkan nama file beserta path nya: ");
 				String fileName = obj.nextLine();
+				fileName = obj.nextLine();
 				m = txtscanner.getMatrixFile(fileName);
 			}
 			String[] solusi = spl.eliminasiGauss(m,true);
@@ -182,6 +188,7 @@ public class utils {
 			else if (fileorKey==2){
 				System.out.println("masukkan nama file beserta path nya: ");
 				String fileName = obj.nextLine();
+				fileName = obj.nextLine();
 				m = txtscanner.getMatrixFile(fileName);
 			}
 			String[] solusi = spl.eliminasiGaussJordan(m,true);
@@ -202,6 +209,8 @@ public class utils {
 			else if (fileorKey==2){
 				System.out.println("masukkan nama file beserta path nya: ");
 				String fileName = obj.nextLine();
+				fileName = obj.nextLine();
+				fileName = obj.nextLine();
 				m = txtscanner.getMatrixFile(fileName);
 			}
 			//spl.matrixBalikan(m);
@@ -246,6 +255,7 @@ public class utils {
 			else if (fileorKey==2){
 				System.out.println("masukkan nama file beserta path nya: ");
 				String fileName = obj.nextLine();
+				fileName = obj.nextLine();
 				m = txtscanner.getMatrixFile(fileName);
 			}
 			System.out.print("determinant: ");
@@ -266,6 +276,7 @@ public class utils {
 			else if (fileorKey==2){
 				System.out.println("masukkan nama file beserta path nya: ");
 				String fileName = obj.nextLine();
+				fileName = obj.nextLine();
 				m = txtscanner.getMatrixFile(fileName);
 			}
 			System.out.print("determinant: ");
