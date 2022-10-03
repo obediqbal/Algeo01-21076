@@ -103,4 +103,11 @@ public class Matriks {
         }
         return newm;
     }
+    public static double[] getLinear(double[][] m){
+        double[] nm = new double[m.length];
+        for(int i = 0; i<m.length; i++){
+            nm[i] = m[i][0];
+        }
+        return nm;
+    }
 }
