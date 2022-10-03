@@ -43,7 +43,7 @@ public class Matriks {
         double [][]adj = new double[m.length][m.length];
         for (i = 0; i < m.length; i++){
             for (j = 0; j < m.length; j++){
-                adj[i][j] = p*determinant.ekspansiKofaktor(kofaktor(m, i, j));
+                adj[i][j] = p*determinant.reduksiBaris(kofaktor(m, i, j));
                 //System.out.println(adj[i][j]);
                 p=-p;
             }   //System.out.print(adj[i][j] + " ");
