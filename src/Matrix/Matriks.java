@@ -1,5 +1,6 @@
 package Matrix;
 import Matrix.determinant;
+import Utils.Global;
 import Utils.utils;
 
 public class Matriks {
@@ -38,7 +39,6 @@ public class Matriks {
 	}
     public static void adjoint(double [][]m){
         int i, j;
-        int p=1;
         double [][]adj = new double[m.length][m.length];
         for (i = 0; i < m.length; i++){
             for (j = 0; j < m.length; j++){
@@ -70,6 +70,34 @@ public class Matriks {
         }
     }
 
+    public static double[][] inverse(double[][] m, boolean obe){
+        if(determinant.ekspansiKofaktor(m)==0){
+            System.out.println("Determinan 0, tidak punya invers");
+            return new double[0][0];
+        }
+        double[][] nm = new double[m.length][m[0].length];
+        double[][] res = createIdentity(m[0].length);
+
+        utils.copyMatrix(m, nm);
+        System.out.println();
+        utils.printMatrix(nm);
+        System.out.println();
+        
+        OBE.toEchelon(nm, true);
+        int count = 0;
+        while(!Global.instructions.isEmpty()){
+            count++;
+            Global.instructions.nextInstruction();
+            Global.instructions.currentInstruction.runOBE(res);
+        }
+
+        System.out.println();
+        utils.printMatrix(res);
+        System.out.println();
+        
+        return res;
+    }
+
     public static void fillNaN(double[] m){
         for(int i = 0; i<m.length; i++){
             for(int j = 0; j<m.length; j++){
@@ -93,5 +121,22 @@ public class Matriks {
             }
         }
         return newm;
+    }
+    public static double[] getLinear(double[][] m){
+        double[] nm = new double[m.length];
+        for(int i = 0; i<m.length; i++){
+            nm[i] = m[i][0];
+        }
+        return nm;
+    }
+    public static double[][] createIdentity(int n){
+        double[][] nm = new double[n][n];
+        for(int i = 0; i<n; i++){
+            for(int j = 0; j<n; j++){
+                if(i==j) nm[i][j] = 1;
+                else nm[i][j] = 0;
+            }
+        }
+        return nm;
     }
 }
