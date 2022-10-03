@@ -1,22 +1,29 @@
 package Matrix;
 import Utils.Global;
+import Utils.utils;
 
 public class OBEInstruction extends OBE {
     public String name;
     int x;
     int y;
+    double z;
 
     public OBEInstruction(String nname, int nx, int ny){
         name = nname;
         x = nx;
         y = ny;
     }
+    public OBEInstruction(String nname, int nx, double nz){
+        name = nname;
+        x = nx;
+        z = nz;
+    }
 
-    private int determineType(OBEInstruction o){
+    private int determineType(){
         String[] type = {"add", "sub", "mul", "div", "switch"};
         
         for(int i = 0; i<5; i++){
-            if(type[i].equals(o.name)) return i;
+            if(type[i].equals(this.name)) return i;
         }
         return -1;
     }
@@ -40,21 +47,23 @@ public class OBEInstruction extends OBE {
             }
         }
     }
-    private void multdivrow(double[][] m, boolean mult, int x, int y){
+    private void multdivrow(double[][] m, boolean mult, int x, double multiplydigit){
         int j;
-        double multiplydigit = m[x][y];
         for (j = 0; j < m[x].length; j++){
             if (mult){
                 m[x][j] = multiplydigit * m[x][j];
             }
             else{
-                if(multiplydigit==0) return;
                 m[x][j] = m[x][j] / multiplydigit;
             }
         }  
     }
     public void runOBE(double[][] m){
-        int idx = determineType(this);
+        int idx = determineType();
+        System.out.println(this.name +" ("+x+","+y+")");
+        utils.printMatrix(m);
+        System.out.println();
+
         try{
             switch(idx){
                 case 0: //add
@@ -64,10 +73,10 @@ public class OBEInstruction extends OBE {
                     addsubrow(m, false, this.x, this.y);
                     break;
                 case 2: //mul
-                    multdivrow(m, true, this.x, this.y);
+                    multdivrow(m, true, this.x, this.z);
                     break;
                 case 3: //div
-                    multdivrow(m, false, this.x, this.y);
+                    multdivrow(m, false, this.x, this.z);
                     break;
                 case 4: //switch
                     changerow(m, this.x, this.y);

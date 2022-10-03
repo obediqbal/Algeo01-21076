@@ -42,8 +42,8 @@ public class Matriks {
         double [][]adj = new double[m.length][m.length];
         for (i = 0; i < m.length; i++){
             for (j = 0; j < m.length; j++){
-                adj[i][j] = p*determinant.ekspansiKofaktor(kofaktor(m, i, j));
-                p=-p;
+                // adj[i][j] = p*determinant.ekspansiKofaktor(kofaktor(m, i, j));
+                // p=-p;
             }   //System.out.print(adj[i][j] + " ");
         }//System.out.println();
         transpose(adj);
@@ -76,26 +76,30 @@ public class Matriks {
             return new double[0][0];
         }
         double[][] nm = new double[m.length][m[0].length];
-        double[][] res = createIdentity(m[0].length);
-
         utils.copyMatrix(m, nm);
-        System.out.println();
-        utils.printMatrix(nm);
-        System.out.println();
-        
-        OBE.toEchelon(nm, true);
-        int count = 0;
-        while(!Global.instructions.isEmpty()){
-            count++;
-            Global.instructions.nextInstruction();
-            Global.instructions.currentInstruction.runOBE(res);
-        }
 
-        System.out.println();
-        utils.printMatrix(res);
-        System.out.println();
+        double[][] res = reverseIdentity(nm);
+
         
         return res;
+    }
+
+    public static double[][] reverseIdentity(double[][] m){
+        double[][] id = createIdentity(m[0].length);
+        double[][] nm = new double[m.length][m[0].length];
+        
+        utils.copyMatrix(m, nm);
+        OBE.toEchelon(nm, true);
+        
+        while(!Global.instructions.isEmpty()){
+            Global.instructions.nextInstruction();
+            Global.instructions.nextInstruction();
+            Global.instructions.nextInstruction();
+            Global.instructions.currentInstruction.runOBE(id);
+        }
+
+        return id;
+
     }
 
     public static void fillNaN(double[] m){
@@ -138,5 +142,51 @@ public class Matriks {
             }
         }
         return nm;
+    }
+
+    public static void main(String[] args) {
+		// double[][] m ={{2,3,-1},{4,4,-3},{-2,3,-1}};
+        // double[][] m = {{1,2,3},{2,5,3},{1,0,8}};
+        // double[][] nm = {{1,2,3},{2,5,3},{1,0,8}};
+        
+        // System.out.println();
+        // utils.printMatrix(m);
+        // System.out.println();
+
+        // System.out.println();
+        // utils.printMatrix(nm);
+        // System.out.println();
+
+        // OBE.toEchelon(m, true);
+        // double[][] inverse_m = inverse(m, true);
+        // System.out.println();
+        // utils.printMatrix(inverse_m);
+        // System.out.println();
+
+        
+
+        // int count = 0;
+
+        // // Global.instructions.startInstruction();
+        // // Global.instructions.currentInstruction.runOBE(nm);
+        // Global.instructions.idx = 0;
+        // while(!Global.instructions.isEmpty()){
+        //     count++;
+        //     Global.instructions.nextInstruction();
+        //     Global.instructions.nextInstruction();
+        //     Global.instructions.nextInstruction();
+        //     Global.instructions.currentInstruction.runOBE(nm);
+        // }
+
+        // System.out.println(count);
+        // System.out.println();
+        // utils.printMatrix(m);
+        // System.out.println();
+
+        // System.out.println();
+        // utils.printMatrix(nm);
+        // System.out.println();
+        
+        
     }
 }

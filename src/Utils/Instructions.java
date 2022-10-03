@@ -3,10 +3,10 @@ package Utils;
 import Matrix.OBEInstruction;
 
 public class Instructions {
-    private int CAPACITY = 500;
+    private int CAPACITY = 5000;
     public OBEInstruction[] list = new OBEInstruction[CAPACITY];
     public OBEInstruction currentInstruction;
-    private int idx;
+    public int idx;
     private int nextIdx;
     public int length;
 

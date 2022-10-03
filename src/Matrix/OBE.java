@@ -38,46 +38,46 @@ public class OBE {
         double multiplydigit = m[x][y];
         for (j = 0; j < m[x].length; j++){
             if (mult){
-                OBEInstruction o = new OBEInstruction("mult", x, y);
+                OBEInstruction o = new OBEInstruction("mult", x, multiplydigit);
                 Global.instructions.enqueueInstruction(o);
 
                 m[x][j] = multiplydigit * m[x][j];
             }
             else{
                 if(multiplydigit == 0) return;
-                OBEInstruction o = new OBEInstruction("div", x, y);
+                OBEInstruction o = new OBEInstruction("div", x, multiplydigit);
                 Global.instructions.enqueueInstruction(o);
 
                 m[x][j] = m[x][j] / multiplydigit;
             }
         }   
     }  
-    public static void triangleup(double[][] m){
-        int i, j;
-        double multiplydigit;
+    // public static void triangleup(double[][] m){
+    //     int i, j;
+    //     double multiplydigit;
         
-        for (i = 1; i < m.length; i++){
-            for (j = 0; j < i; j++){
-                multiplydigit = m[j][j] / m[i][j];
-                multdivrows(m, true, i, multiplydigit);
-                addsubrows(m, false, i, j);
-            }
-        }
-    }
-    public static void triangledown(double[][] m){
-        int i, j;
-        double multiplydigit;
+    //     for (i = 1; i < m.length; i++){
+    //         for (j = 0; j < i; j++){
+    //             multiplydigit = m[j][j] / m[i][j];
+    //             multdivrows(m, true, i, multiplydigit);
+    //             addsubrows(m, false, i, j);
+    //         }
+    //     }
+    // }
+    // public static void triangledown(double[][] m){
+    //     int i, j;
+    //     double multiplydigit;
         
-        for (i = m.length-1; i >= 0; i--){
-            for (j = m.length-1; j > i; j--){
-                multiplydigit = m[j][j] / m[i][j];
-                multdivrows(m, true, i, multiplydigit);
-                addsubrows(m, false, i, j);
-                // System.out.println("mult:"+multiplydigit);
-                // System.out.print(i + ":" + j + " ");
-            }
-        }
-    }
+    //     for (i = m.length-1; i >= 0; i--){
+    //         for (j = m.length-1; j > i; j--){
+    //             multiplydigit = m[j][j] / m[i][j];
+    //             multdivrows(m, true, i, multiplydigit);
+    //             addsubrows(m, false, i, j);
+    //             // System.out.println("mult:"+multiplydigit);
+    //             // System.out.print(i + ":" + j + " ");
+    //         }
+    //     }
+    // }
     private static int findNonZero(double[][] m, int col, int a, int b){
         for(int i = a; i<b; i++){
             if(m[i][col]!=0) return i;
@@ -120,22 +120,18 @@ public class OBE {
                     addsubrows(m, false, i, toprow);
                 }
             }
-            System.out.println();
-            utils.printMatrix(m);
             toprow++;
         }
-<<<<<<< Updated upstream
-=======
 
         if(reduced){
             for(int i = 0; i<m.length; i++){
-                idx = findBaseVarIdx(m, i);
-                if(idx!=-1 && m[i][idx]!=1.0){
-                    multdivrows(m, false, i, idx);
+                for(int j = 0; j<m[0].length; j++){
+                    if(m[i][j]!=1 && m[i][j]!=0){
+                        multdivrows(m, false, i, j);
+                    }
                 }
             }
         }
->>>>>>> Stashed changes
     }
 
     public static int getFirstNonZeroIdx(double[][] m) {

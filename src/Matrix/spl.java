@@ -223,12 +223,8 @@ public class spl {
 		for(i=m.length-1; i>=0; i--){
 			var = findBaseVarIdx(nm, i);
 			if(var!=-1){
-<<<<<<< Updated upstream
-				res[var] = nm[i][nm.length-1];
-=======
 				// System.out.println("var: " + var + " i: " + i);
 				res[var] = nm[i][m[0].length-1];
->>>>>>> Stashed changes
 				j = var+1;
 				while(j<nm.length-1){
 					if(var!=j && nm[i][j]!=0) res[var] -= nm[i][j]*res[j];
@@ -244,15 +240,11 @@ public class spl {
 		double[][] nm = new double[m[0].length][m[0].length];
 		utils.forceCopyMatrix(m, nm);
 		OBE.toEchelon(nm, false);
-<<<<<<< Updated upstream
-		
-=======
 
 		// System.out.println();
 		// utils.printMatrix(nm);
 		// System.out.println();
 
->>>>>>> Stashed changes
 		double[] res = eliminasiGauss(m);
 		return resListToParametric(res, m, nm, parametric);
 	} 
@@ -291,46 +283,14 @@ public class spl {
 		double[][] nm = new double[m[0].length][m[0].length];
 		utils.forceCopyMatrix(m, nm);
 		OBE.toEchelon(nm, true);
-<<<<<<< Updated upstream
-=======
 
 		// System.out.println();
 		// utils.printMatrix(nm);
 		// System.out.println();
->>>>>>> Stashed changes
 		
 		double[] res = eliminasiGaussJordan(m);
 		return resListToParametric(res, m, nm, parametric);
 	}
-<<<<<<< Updated upstream
-	// public static void main(String[] args) {
-	// 	int a = 3;
-	// 	int b = 4;
-	// 	// double[][] m = new double[a][b];
-	// 	// utils.readMatrix(m, a, b);
-	// 	double[][] m = {{1, -1, 2, 5}, {2, -2, 4, 10}, {3, -1, 6, 15}}; //parametrik
-	// 	// double[][] m ={{2,3,-1,5},{-2,3,-1,1},{4,4,-3,3}}; // punya solusi
-	// 	// double[][] m ={{2,3,-1,5},{4,4,-3,3},{-2,3,-1,1}}; // punya solusi
-    //     // double m[][] = {{1,3,-2,0,2,0,0},{2,6,-5,-2,4,-3,-1},{0,0,5,10,0,15,5},{2,6,0,8,4,18,6}}; // parametrik
-	// 	// double[][] m = {{1,2,1,1},{2,2,0,2},{3,4,1,2}}; //Tidak ada solusi
-	// 	// utils.printMatrix(m);
-		
-	// 	// double[][] m ={{1,1,-1,-1,1},{2,5,-7,-5,-2},{2,-1,1,3,4},{5,2,-4,2,6}};
-	// 	// double[][] m = {{1,-1,0,0,1,3},{1,1,0,-3,0,6},{2,-1,0,1,-1,5},{-1,2,0,-2,-1,-1}};
-	// 	// String[] res = eliminasiGaussJordan(m);
-	// 	// utils.printSolusi(res);;
-	// 	String[] gres = eliminasiGauss(m, true);
-	// 	// double[] dres = eliminasiGauss(m);
-	// 	String[] gjres = eliminasiGaussJordan(m, true);
-	// 	// double[] dres = eliminasiGaussJordan(m);
-	// 	System.out.println();
-	// 	utils.printSolusi(gres);
-	// 	System.out.println();
-	// 	utils.printSolusi(gjres);
-	// 	// double[][] res = eliminasiGauss(m);
-	// 	// res = eliminasiGauss(m);
-	// }
-=======
 
 	public static double[] inverseMatrixMethod(double[][] m){
 		double[][] nm = new double[m.length][m[0].length-1];
@@ -380,5 +340,4 @@ public class spl {
 		// double[][] res = eliminasiGauss(m);
 		// res = eliminasiGauss(m);
 	}
->>>>>>> Stashed changes
 }
