@@ -267,7 +267,7 @@ public class spl {
 		for(i=0; i<m.length; i++){
 			var=OBE.findBaseVarIdx(nm, i);
 			if(var!=-1 && isSole(nm, i)){
-				if(nm[i][i]!=1 && nm[i][i]!=0) OBE.multdivrows(nm, false, i, nm[i][i]);
+				if(nm[i][i]!=1 && nm[i][i]!=0) OBE.multdivrows(nm, false, i, i);
 				res[var] = nm[i][m[i].length-1];
 			}
 		}

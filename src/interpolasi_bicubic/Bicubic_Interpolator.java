@@ -10,11 +10,8 @@ public class Bicubic_Interpolator {
     public Bicubic_Interpolator(double[][] fvalin){
         // f = Xa <=> X^(-1)f = a
         fval = fToLinearCol(fvalin);
-        System.out.println('a');
         x = createX();
-        System.out.println('b');
         a = solveA();
-        System.out.println('c');
     }
 
     private double[][] createX(){
@@ -51,10 +48,8 @@ public class Bicubic_Interpolator {
     }
 
     private double[] solveA(){
-        double[][] inverse_x = Matriks.inverse(this.x);
-        System.out.println('d');
+        double[][] inverse_x = Matriks.inverse(this.x, true);
         double[][] multiply_res = Matriks.multiplyMatrix(inverse_x, this.fval);
-        System.out.println('e');
 
 
         return Matriks.getLinear(multiply_res);

@@ -1,9 +1,13 @@
 package Matrix;
 
 import Utils.utils;
+import Utils.Global;
 
 public class OBE {
     public static void changerows(double[][] m, int x, int y){
+        OBEInstruction o = new OBEInstruction("switch", x, y);
+        Global.instructions.enqueueInstruction(o);
+        
         int i; 
         double temp;
         for (i = 0; i < m[x].length; i++) {
@@ -15,21 +19,39 @@ public class OBE {
     public static void addsubrows(double[][] m, boolean add, int x, int y){
         int j;
         for (j = 0; j < m[x].length; j++){
-            if (add)
-            m[x][j] = m[y][j] + m[x][j];
-            else
-            m[x][j] = m[x][j] - m[y][j];
+            if (add){
+                OBEInstruction o = new OBEInstruction("add", x, y);
+                Global.instructions.enqueueInstruction(o);
+
+                m[x][j] = m[y][j] + m[x][j];
+            }
+            else{
+                OBEInstruction o = new OBEInstruction("sub", x, y);
+                Global.instructions.enqueueInstruction(o);
+
+                m[x][j] = m[x][j] - m[y][j];
+            }
         }
     }
-    public static void multdivrows(double[][] m, boolean mult, int x, double multiplydigit){
+    public static void multdivrows(double[][] m, boolean mult, int x, int y){
         int j;
+        double multiplydigit = m[x][y];
         for (j = 0; j < m[x].length; j++){
-            if (mult)
-            m[x][j] = multiplydigit * m[x][j];
-            else
-            m[x][j] = m[x][j] / multiplydigit;
+            if (mult){
+                OBEInstruction o = new OBEInstruction("mult", x, multiplydigit);
+                Global.instructions.enqueueInstruction(o);
+
+                m[x][j] = multiplydigit * m[x][j];
+            }
+            else{
+                if(multiplydigit == 0) return;
+                OBEInstruction o = new OBEInstruction("div", x, multiplydigit);
+                Global.instructions.enqueueInstruction(o);
+
+                m[x][j] = m[x][j] / multiplydigit;
+            }
         }   
-    }
+    }  
     public static int findBaseVarIdx(double[][] m, int x){
 		for(int i = 0; i<m[0].length-1; i++){
 			if(m[x][i]!=0) return i;
@@ -82,6 +104,8 @@ public class OBE {
         double[][] nm = new double[utils.max(m.length, m[0].length)][m[0].length];
         utils.forceCopyMatrix(m, nm);
 
+        Global.instructions.clearInstructions();
+
         int toprow = 0;
         int idx;
 
@@ -94,24 +118,23 @@ public class OBE {
                 // if(idx==-1) System.out.println("not found");
             }
             if(m[toprow][j] != 1){ // make sure base is 1
-                multdivrows(m, false, toprow, m[toprow][j]);
+                multdivrows(m, false, toprow, j);
             }
             for(int i = m.length-1; i>(reduced ? -1 : toprow); i--){ // eliminate into 0
                 if(m[i][j] != 0 && i!=toprow){
-                    multdivrows(m, false, i, m[i][j]);
+                    multdivrows(m, false, i, j);
                     addsubrows(m, false, i, toprow);
                 }
             }
-            //System.out.println();
-            //utils.printMatrix(m);
             toprow++;
         }
 
         if(reduced){
             for(int i = 0; i<m.length; i++){
-                idx = findBaseVarIdx(m, i);
-                if(idx!=-1 && m[i][idx]!=1.0){
-                    multdivrows(m, false, i, m[i][idx]);
+                for(int j = 0; j<m[0].length; j++){
+                    if(m[i][j]!=1 && m[i][j]!=0){
+                        multdivrows(m, false, i, j);
+                    }
                 }
             }
         }

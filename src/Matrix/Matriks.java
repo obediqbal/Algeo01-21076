@@ -1,6 +1,7 @@
 package Matrix;
 import Matrix.determinant;
 import Utils.utils;
+import Utils.Global;
 
 public class Matriks {
     public static double[][] transpose(double[][] m){
@@ -78,6 +79,39 @@ public class Matriks {
         
         return m;
     }
+    
+    
+    public static double[][] inverse(double[][] m, boolean obe){
+        // if(determinant.ekspansiKofaktor(m)==0){
+        //     System.out.println("Determinan 0, tidak punya invers");
+        //     return new double[0][0];
+        // }
+        double[][] nm = new double[m.length][m[0].length];
+        utils.copyMatrix(m, nm);
+
+        double[][] res = reverseIdentity(nm);
+
+        
+        return res;
+    }
+
+    public static double[][] reverseIdentity(double[][] m){
+        double[][] id = createIdentity(m[0].length);
+        double[][] nm = new double[m.length][m[0].length];
+        
+        utils.copyMatrix(m, nm);
+        OBE.toEchelon(nm, true);
+        
+        while(!Global.instructions.isEmpty()){
+            Global.instructions.nextInstruction();
+            Global.instructions.nextInstruction();
+            Global.instructions.nextInstruction();
+            Global.instructions.currentInstruction.runOBE(id);
+        }
+
+        return id;
+
+    }
 
     public static void fillNaN(double[] m){
         for(int i = 0; i<m.length; i++){
@@ -109,5 +143,20 @@ public class Matriks {
             nm[i] = m[i][0];
         }
         return nm;
+    }
+    public static double[][] createIdentity(int n){
+        double[][] nm = new double[n][n];
+        for(int i = 0; i<n; i++){
+            for(int j = 0; j<n; j++){
+                if(i==j) nm[i][j] = 1;
+                else nm[i][j] = 0;
+            }
+        }
+        return nm;
+    }
+
+    public static void main(String[] args) {
+        double[][] m = {{1,2,3},{2,5,3},{1,0,8}};
+        double[][] nm = inverse(m, true);
     }
 }
