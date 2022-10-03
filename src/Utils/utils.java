@@ -212,7 +212,8 @@ public class utils {
 				fileName = obj.nextLine();
 				m = txtscanner.getMatrixFile(fileName);
 			}
-			//spl.matrixBalikan(m);
+			double[] solusi= spl.inverseMatrixMethod(m);
+			printSolusi(solusi);
 		}
 		else if(menu==4){
 			double[][] m=null;
