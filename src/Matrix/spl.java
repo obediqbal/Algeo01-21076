@@ -233,6 +233,10 @@ public class spl {
 			}
 		}
 
+		System.out.println();
+		utils.printMatrix(nm);
+		System.out.println();
+
 		return res;
 	}
 	
@@ -250,7 +254,6 @@ public class spl {
 	} 
 
 	public static double[] eliminasiGaussJordan(double[][] m){
-		// GAK BISA PAKE TRIANGLE DOWN EUYY, AKAN KUBIKIN TOESELON()
 		double[][] nm = new double[utils.max(m.length, m[0].length)][m[0].length];
 		utils.fillZero(nm);
 		utils.forceCopyMatrix(m, nm);
@@ -276,6 +279,11 @@ public class spl {
 				res[var] = nm[i][m[i].length-1];
 			}
 		}
+
+		// System.out.println();
+		// utils.printMatrix(nm);
+		// System.out.println();
+
 		return res;
 	}
 
@@ -284,10 +292,13 @@ public class spl {
 		utils.forceCopyMatrix(m, nm);
 		OBE.toEchelon(nm, true);
 
+<<<<<<< Updated upstream
 		// System.out.println();
 		// utils.printMatrix(nm);
 		// System.out.println();
 		
+=======
+>>>>>>> Stashed changes
 		double[] res = eliminasiGaussJordan(m);
 		return resListToParametric(res, m, nm, parametric);
 	}

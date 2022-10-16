@@ -92,9 +92,12 @@ public class Matriks {
         OBE.toEchelon(nm, true);
         
         while(!Global.instructions.isEmpty()){
-            Global.instructions.nextInstruction();
-            Global.instructions.nextInstruction();
-            Global.instructions.nextInstruction();
+            // Global.instructions.nextInstruction();
+            // Global.instructions.nextInstruction();
+            // Global.instructions.nextInstruction();
+            for(int i = 0; i<m.length; i++){
+                Global.instructions.nextInstruction();
+            }
             Global.instructions.currentInstruction.runOBE(id);
         }
 
@@ -145,6 +148,7 @@ public class Matriks {
     }
 
     public static void main(String[] args) {
+<<<<<<< Updated upstream
 		// double[][] m ={{2,3,-1},{4,4,-3},{-2,3,-1}};
         // double[][] m = {{1,2,3},{2,5,3},{1,0,8}};
         // double[][] nm = {{1,2,3},{2,5,3},{1,0,8}};
@@ -188,5 +192,11 @@ public class Matriks {
         // System.out.println();
         
         
+=======
+        // double[][] m = {{1,2,9},{2,12,3},{1,6,8}};
+        double[][] m = {{2,3,-1,1},{-3,2,0,3},{3,-2,1,0},{3,-2,1,4}};
+        double[][] nm = inverse(m, true);
+        utils.printMatrix(nm);
+>>>>>>> Stashed changes
     }
 }
